@@ -915,7 +915,7 @@ async function fetchLiveCF() {
   const aval = kw => { const r=assump.find(row=>row.some(c=>c&&c.toString().includes(kw))); if(!r) return null; const i=r.findIndex(c=>c&&c.toString().includes(kw)); for(let j=i+1;j<r.length;j++){if(r[j]!==undefined&&r[j]!=='')return r[j];} return null; };
 
   const monthlyRev   = parseN(aval('Monthly Sales Revenue') || aval('Monthly Revenue'));
-  const collRate     = parseRate(aval('Collection Rate'));
+  const assumptionCollRate = parseRate(aval('Collection Rate'));
   const cogs         = parseRate(aval('COGS %')) || 0.58;
   const opex         = parseN(aval('Monthly Operating')) || 1200000;
   const equity       = parseN(aval('Equity'));
@@ -925,14 +925,37 @@ async function fetchLiveCF() {
   const grossMargin  = 1 - cogs;
   const monthlyGross = monthlyRev * grossMargin;
   const monthlyNet   = monthlyGross - opex;
+  let collectionRate = assumptionCollRate;
+  let collectionForecast = 0;
+  let collectionActual = 0;
+  const dashMetric = Object.fromEntries(
+    dashSheet
+      .filter(r=>r[0]!==undefined&&r[1]!==undefined)
+      .map(r=>[String(r[0]).trim(), r[1]])
+  );
+
+  // Collection rate from actual cashflow collection performance
+  if (collSheet.length > 1) {
+    const hdrI = collSheet.findIndex(r=>r.some(c=>c&&String(c).includes('Forecast Collections')));
+    if (hdrI >= 0) {
+      const headers = collSheet[hdrI];
+      const forecastI = headers.findIndex(c=>c&&String(c).includes('Forecast'));
+      const actualI = headers.findIndex(c=>c&&String(c).includes('Actual'));
+      const rows = collSheet.slice(hdrI+1).filter(r=>r[0]);
+      collectionForecast = rows.reduce((s,r)=>s+parseN(r[forecastI]),0);
+      collectionActual = rows.reduce((s,r)=>s+parseN(r[actualI]),0);
+      if (collectionForecast > 0) collectionRate = collectionActual / collectionForecast;
+    }
+  }
+  if (!collectionRate && dashMetric['COLLECTION RATE (YTD)']) collectionRate = parseRate(dashMetric['COLLECTION RATE (YTD)']);
 
   if (monthlyRev > 0) {
     setText('cf-kpi-rev',      fmtKSh(monthlyRev));
     setText('cf-kpi-cogs',     fmtKSh(monthlyRev * cogs));
     setText('cf-kpi-margin',   (grossMargin*100).toFixed(1)+'%');
     setText('cf-kpi-headroom', fmtKSh(headroom));
-    setText('cf-kpi-collrate', (collRate*100||72).toFixed(1)+'%');
-    setText('cf-banner-collections', (collRate*100||72).toFixed(1)+'%');
+    setText('cf-kpi-collrate', (collectionRate*100||72).toFixed(1)+'%');
+    setText('cf-banner-collections', (collectionRate*100||72).toFixed(1)+'%');
   }
   if (wcFacility > 0) {
     setText('cf-sig-facility', fmtKSh(wcFacility));
@@ -943,11 +966,6 @@ async function fetchLiveCF() {
 
   // Cashflow management brief from Dashboard tab
   if (dashSheet.length > 1) {
-    const dashMetric = Object.fromEntries(
-      dashSheet
-        .filter(r=>r[0]!==undefined&&r[1]!==undefined)
-        .map(r=>[String(r[0]).trim(), r[1]])
-    );
     if (dashMetric['TOP RISK DRIVER']) setText('cf-exec-risk', dashMetric['TOP RISK DRIVER']);
     if (dashMetric['RECOMMENDED ACTION']) setText('cf-exec-action', dashMetric['RECOMMENDED ACTION']);
     if (dashMetric['MANAGEMENT PRIORITY']) setText('cf-exec-prio', dashMetric['MANAGEMENT PRIORITY']);
@@ -958,18 +976,12 @@ async function fetchLiveCF() {
   }
 
   // Collections signal from tracker
-  if (collSheet.length > 1) {
-    const ch = collSheet[0], cv = collSheet[1];
-    const forecast = parseN(cv[ch.findIndex(c=>c&&c.includes('Forecast'))||1]);
-    const actual   = parseN(cv[ch.findIndex(c=>c&&c.includes('Actual'))||2]);
-    const shortfall= actual-forecast;
-    const rate     = forecast>0?actual/forecast:0.72;
-    if (forecast>0) {
-      setText('cf-sig-forecast',  fmtKSh(forecast));
-      setText('cf-sig-actual',    fmtKSh(actual));
+  if (collectionForecast > 0) {
+      const shortfall= collectionActual-collectionForecast;
+      setText('cf-sig-forecast',  fmtKSh(collectionForecast));
+      setText('cf-sig-actual',    fmtKSh(collectionActual));
       setText('cf-sig-shortfall', shortfall<0?'('+fmtKSh(Math.abs(shortfall))+')':fmtKSh(shortfall));
-      setText('cf-sig-rate',      (rate*100).toFixed(1)+'%');
-    }
+      setText('cf-sig-rate',      (collectionRate*100).toFixed(1)+'%');
   }
 
   // Cost tracker totals
