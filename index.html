@@ -432,23 +432,23 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     <div class="badge-val">ACTIVE</div>
   </div>
   <div class="cf-meta">
-    <div class="cf-meta-row"><span class="cf-meta-key">Risk</span><span class="cf-meta-val amber">Collections lag creating Week 3–6 working capital trough</span></div>
+    <div class="cf-meta-row"><span class="cf-meta-key">Risk</span><span class="cf-meta-val amber" id="cf-banner-risk">45-day hospital payment terms create recurring W3-W6 cash trough.</span></div>
     <div class="cf-meta-row"><span class="cf-meta-key">Trigger</span><span class="cf-meta-val">Working capital draw expected Week 4</span></div>
-    <div class="cf-meta-row"><span class="cf-meta-key">Action</span><span class="cf-meta-val green">Escalate Parklands Orthopaedic and Westgate Specialist. Request advance on PhysioEquip International restock</span></div>
+    <div class="cf-meta-row"><span class="cf-meta-key">Action</span><span class="cf-meta-val green" id="cf-banner-action">Escalate overdue hospital accounts. Request advance on Chattanooga restock. Review DJO Global terms.</span></div>
   </div>
   <div class="cf-headline">
-    <h3>KSh 3.2M working capital trough in Week 5 covered by KSh 10.0M facility with KSh 6.8M headroom.</h3>
+    <h3 id="cf-banner-headline">KSh 3.2M working capital trough covered by KSh 10.0M facility with KSh 6.8M headroom.</h3>
     <p>Facility covers trough at current assumptions, dependent on hospital collection timing improving to 30-day average.</p>
   </div>
   <div class="cf-outlook">
-    <div class="cf-outlook-level">WATCH</div>
+    <div class="cf-outlook-level" id="cf-banner-status">WATCH</div>
     <div class="cf-outlook-badge ob-watch">WATCH</div>
     <div class="cf-outlook-meta">
       Peak gap: <span>Week 5</span><br>
       First positive: <span>Week 10</span><br>
       Finance drawn: <span>KSh 2.8M</span><br>
-      Collections <span>72%</span> of invoiced<br>
-      Accelerate Parklands Orthopaedic recovery
+      Collections <span id="cf-banner-collections">72%</span> of invoiced<br>
+      <span id="cf-banner-priority">Draw on WC facility only after W6. Hold KSh 2M buffer. Review supplier terms this month.</span>
     </div>
   </div>
 </div>
@@ -456,7 +456,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 <!-- Capital KPIs -->
 <div class="kpi-grid" style="margin-bottom:32px">
   <div class="kpi-card"><div class="kpi-label">Monthly Revenue</div><div class="kpi-value blue" id="cf-kpi-rev">KSh 8.4M</div><div class="kpi-sub">Invoiced to hospitals &amp; clinics</div></div>
-  <div class="kpi-card"><div class="kpi-label">Monthly COGS</div><div class="kpi-value" style="color:var(--white)" id="cf-kpi-cogs">KSh 4.9M</div><div class="kpi-sub">MedTech Supply Co, PhysioEquip International, freight</div></div>
+  <div class="kpi-card"><div class="kpi-label">Monthly COGS</div><div class="kpi-value" style="color:var(--white)" id="cf-kpi-cogs">KSh 4.9M</div><div class="kpi-sub">DJO Global, Chattanooga, freight</div></div>
   <div class="kpi-card"><div class="kpi-label">Gross Margin</div><div class="kpi-value green" id="cf-kpi-margin">42.0%</div><div class="kpi-sub">KSh 3.5M gross profit</div></div>
   <div class="kpi-card"><div class="kpi-label">Peak Funding Gap</div><div class="kpi-value danger">(KSh 3.2M)</div><div class="kpi-sub">Worst weekly shortfall</div></div>
   <div class="kpi-card"><div class="kpi-label">Facility Headroom</div><div class="kpi-value amber" id="cf-kpi-headroom">KSh 6.8M</div><div class="kpi-sub">Facility minus peak gap</div></div>
@@ -759,6 +759,10 @@ async function getRange(sheetId, range) {
 }
 
 const parseN = v => { if(!v && v!==0) return 0; const n=parseFloat(String(v).replace(/[^0-9.\-]/g,'')); return isNaN(n)?0:n; };
+const parseRate = v => {
+  const n = parseN(v);
+  return String(v).includes('%') || n > 1 ? n / 100 : n;
+};
 const fmtKES = n => { const a=Math.abs(n); if(a>=1e9) return 'KES '+(n/1e9).toFixed(2)+'B'; if(a>=1e6) return 'KES '+(n/1e6).toFixed(2)+'M'; if(a>=1e3) return 'KES '+(n/1e3).toFixed(1)+'K'; return 'KES '+n.toLocaleString(); };
 const fmtKSh = n => { const a=Math.abs(n); if(a>=1e6) return (n<0?'(KSh '+(a/1e6).toFixed(1)+'M)':'KSh '+(a/1e6).toFixed(1)+'M'); if(a>=1e3) return 'KSh '+(n/1e3).toFixed(0)+'K'; return 'KSh '+n.toLocaleString(); };
 
@@ -911,8 +915,8 @@ async function fetchLiveCF() {
   const aval = kw => { const r=assump.find(row=>row.some(c=>c&&c.toString().includes(kw))); if(!r) return null; const i=r.findIndex(c=>c&&c.toString().includes(kw)); for(let j=i+1;j<r.length;j++){if(r[j]!==undefined&&r[j]!=='')return r[j];} return null; };
 
   const monthlyRev   = parseN(aval('Monthly Sales Revenue') || aval('Monthly Revenue'));
-  const collRate     = parseN(aval('Collection Rate'));
-  const cogs         = parseN(aval('COGS %')) || 0.58;
+  const collRate     = parseRate(aval('Collection Rate'));
+  const cogs         = parseRate(aval('COGS %')) || 0.58;
   const opex         = parseN(aval('Monthly Operating')) || 1200000;
   const equity       = parseN(aval('Equity'));
   const wcFacility   = parseN(aval('Working Capital Facility') || aval('WC facility'));
@@ -928,11 +932,13 @@ async function fetchLiveCF() {
     setText('cf-kpi-margin',   (grossMargin*100).toFixed(1)+'%');
     setText('cf-kpi-headroom', fmtKSh(headroom));
     setText('cf-kpi-collrate', (collRate*100||72).toFixed(1)+'%');
+    setText('cf-banner-collections', (collRate*100||72).toFixed(1)+'%');
   }
   if (wcFacility > 0) {
     setText('cf-sig-facility', fmtKSh(wcFacility));
     setText('cf-sig-headroom', fmtKSh(headroom));
     setText('cf-sig-peak',     fmtKSh(Math.abs(peakGap)));
+    setText('cf-banner-headline', `${fmtKSh(Math.abs(peakGap))} working capital trough covered by ${fmtKSh(wcFacility)} facility with ${fmtKSh(headroom)} headroom.`);
   }
 
   // Cashflow management brief from Dashboard tab
@@ -945,6 +951,10 @@ async function fetchLiveCF() {
     if (dashMetric['TOP RISK DRIVER']) setText('cf-exec-risk', dashMetric['TOP RISK DRIVER']);
     if (dashMetric['RECOMMENDED ACTION']) setText('cf-exec-action', dashMetric['RECOMMENDED ACTION']);
     if (dashMetric['MANAGEMENT PRIORITY']) setText('cf-exec-prio', dashMetric['MANAGEMENT PRIORITY']);
+    if (dashMetric['CASHFLOW STATUS']) setText('cf-banner-status', String(dashMetric['CASHFLOW STATUS']).split(/[—-]/)[0].trim());
+    if (dashMetric['TOP RISK DRIVER']) setText('cf-banner-risk', dashMetric['TOP RISK DRIVER']);
+    if (dashMetric['RECOMMENDED ACTION']) setText('cf-banner-action', dashMetric['RECOMMENDED ACTION']);
+    if (dashMetric['MANAGEMENT PRIORITY']) setText('cf-banner-priority', dashMetric['MANAGEMENT PRIORITY']);
   }
 
   // Collections signal from tracker
