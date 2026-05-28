@@ -468,15 +468,15 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 <div class="exec-signal" style="animation-delay:0s">
   <div class="exec-signal-item">
     <div class="exec-label">Top Risk Driver</div>
-    <div class="exec-text">Hospital payment terms averaging 45 days vs 30-day supplier requirement creates recurring Weeks 3–6 cash shortfall of KSh 3.2M.</div>
+    <div class="exec-text" id="cf-exec-risk">45-day hospital payment terms create recurring W3-W6 cash trough.</div>
   </div>
   <div class="exec-signal-item">
     <div class="exec-label">Recommended Action</div>
-    <div class="exec-text">Escalate Parklands Orthopaedic Hospital (KSh 620K, 91 days) and Westgate Specialist (KSh 412K, 45 days). Request advance payment on next PhysioEquip International restock order.</div>
+    <div class="exec-text" id="cf-exec-action">Escalate overdue hospital accounts. Request advance on Chattanooga restock. Review DJO Global terms.</div>
   </div>
   <div class="exec-signal-item">
     <div class="exec-label">Management Priority</div>
-    <div class="exec-text">Draw on WC facility only after Week 6 review. Hold KSh 2M cash buffer minimum through Week 10. Negotiate 45-day terms with MedTech Supply Co rep this month.</div>
+    <div class="exec-text" id="cf-exec-prio">Draw on WC facility only after W6. Hold KSh 2M buffer. Review supplier terms this month.</div>
   </div>
 </div>
 
@@ -897,11 +897,12 @@ async function fetchLiveRIE() {
 }
 
 async function fetchLiveCF() {
-  const [assump, cfSheet, ctSheet, collSheet] = await Promise.all([
+  const [assump, cfSheet, ctSheet, collSheet, dashSheet] = await Promise.all([
     getRange(CF_SHEET, 'Project_Assumptions!A1:C35'),
     getRange(CF_SHEET, 'Monthly_Cashflow!A1:E20'),
     getRange(CF_SHEET, 'Cost_Tracker!A1:H15'),
     getRange(CF_SHEET, 'Collections_Tracker!A1:F8'),
+    getRange(CF_SHEET, 'Dashboard!A1:B20'),
   ]);
 
   if (!assump.length) return;
@@ -932,6 +933,18 @@ async function fetchLiveCF() {
     setText('cf-sig-facility', fmtKSh(wcFacility));
     setText('cf-sig-headroom', fmtKSh(headroom));
     setText('cf-sig-peak',     fmtKSh(Math.abs(peakGap)));
+  }
+
+  // Cashflow management brief from Dashboard tab
+  if (dashSheet.length > 1) {
+    const dashMetric = Object.fromEntries(
+      dashSheet
+        .filter(r=>r[0]!==undefined&&r[1]!==undefined)
+        .map(r=>[String(r[0]).trim(), r[1]])
+    );
+    if (dashMetric['TOP RISK DRIVER']) setText('cf-exec-risk', dashMetric['TOP RISK DRIVER']);
+    if (dashMetric['RECOMMENDED ACTION']) setText('cf-exec-action', dashMetric['RECOMMENDED ACTION']);
+    if (dashMetric['MANAGEMENT PRIORITY']) setText('cf-exec-prio', dashMetric['MANAGEMENT PRIORITY']);
   }
 
   // Collections signal from tracker
