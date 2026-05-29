@@ -180,8 +180,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 /* ── CHART PANEL ── */
 .chart-panel{background:var(--black-2);border:1px solid var(--border);padding:24px;margin-bottom:24px}
-.chart-panel h3{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
-.chart-sub{font-family:var(--mono);font-size:10px;color:var(--white-30);margin-bottom:18px;font-style:italic}
+.chart-panel h3{font-family:var(--mono);font-size:9px;color:var(--white);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+.chart-sub{font-family:var(--mono);font-size:10px;color:var(--white);margin-bottom:18px;font-style:italic}
 .charts-equal{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:24px}
 .inflow-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)}
 .inflow-row:last-child{border-bottom:none}
@@ -628,7 +628,7 @@ const now = new Date();
 document.getElementById('updated-time').textContent = now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) + ', ' + now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
 
 // Chart defaults — matches RIE exactly
-Chart.defaults.color = 'rgba(238,240,244,0.3)';
+Chart.defaults.color = '#ffffff';
 Chart.defaults.font.family = "'DM Mono', monospace";
 Chart.defaults.font.size = 10;
 
@@ -655,8 +655,8 @@ window._trendChart = new Chart(trendCtx, {
     responsive:true,maintainAspectRatio:false,
     plugins:{legend:{display:false},tooltip:{backgroundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1,titleFont:{family:'DM Mono',size:10},bodyFont:{family:'DM Mono',size:12},titleColor:'rgba(238,240,244,0.4)',bodyColor:'#f0a500',callbacks:{label:ctx=>'KES '+(ctx.parsed.y/1e6).toFixed(2)+'M'}}},
     scales:{
-      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'rgba(238,240,244,0.3)'}},
-      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'rgba(238,240,244,0.3)',callback:v=>'KES '+(v/1e6).toFixed(1)+'M'}}
+      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff'}},
+      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KES '+(v/1e6).toFixed(1)+'M'}}
     }
   }
 });
@@ -688,11 +688,11 @@ new Chart(cfMainCtx, {
   },
   options:{
     responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{labels:{color:'rgba(238,240,244,0.3)',font:{size:11},boxWidth:12}},
+    plugins:{legend:{labels:{color:'#ffffff',font:{size:11},boxWidth:12}},
       tooltip:{mode:'index',intersect:false,backgroundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1,callbacks:{title:items=>{const i=items[0].dataIndex;let t=weeks[i];if(i===peakIdx)t+=' ◄ PEAK GAP';if(i===recoveryIdx)t+=' ▲ FIRST POSITIVE';return t;}}}},
     scales:{
-      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'rgba(238,240,244,0.3)',callback:v=>'KSh '+(Math.abs(v)/1e6).toFixed(1)+'M'}},
-      y2:{position:'right',grid:{display:false},ticks:{color:'rgba(238,240,244,0.3)',callback:v=>'KSh '+(v/1e6).toFixed(1)+'M'}}
+      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KSh '+(Math.abs(v)/1e6).toFixed(1)+'M'}},
+      y2:{position:'right',grid:{display:false},ticks:{color:'#ffffff',callback:v=>'KSh '+(v/1e6).toFixed(1)+'M'}}
     }
   }
 });
@@ -708,7 +708,7 @@ new Chart(gapCtx, {
     borderRadius:3
   }]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1}},
-    scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'rgba(238,240,244,0.3)'}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'rgba(238,240,244,0.3)',callback:v=>'KSh '+(v/1e6).toFixed(1)+'M'}}}}
+    scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff'}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KSh '+(v/1e6).toFixed(1)+'M'}}}}
 });
 
 // ── Weekly Table (built from live or static data)
