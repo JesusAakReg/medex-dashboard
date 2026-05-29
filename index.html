@@ -79,6 +79,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .kpi-value{font-family:var(--mono);font-size:24px;font-weight:500;color:var(--white);letter-spacing:-0.5px;line-height:1}
 .kpi-value.danger{color:var(--red)}.kpi-value.amber{color:var(--amber)}.kpi-value.green{color:var(--green)}.kpi-value.blue{color:var(--blue)}
 .kpi-sub{font-family:var(--mono);font-size:9px;color:var(--white-30);margin-top:6px;letter-spacing:0.04em}
+.kpi-help{position:absolute;top:12px;right:12px;width:18px;height:18px;border:1px solid rgba(240,165,0,0.35);background:rgba(240,165,0,0.08);color:var(--amber);font-family:var(--mono);font-size:10px;line-height:16px;text-align:center;cursor:pointer}
+.kpi-help-popover{display:none;position:absolute;top:36px;right:12px;width:min(280px,calc(100% - 24px));z-index:5;background:#0b1117;border:1px solid rgba(240,165,0,0.35);padding:12px;font-family:var(--mono);font-size:10px;line-height:1.6;color:var(--white-60);box-shadow:0 16px 40px rgba(0,0,0,0.35)}
+.kpi-card.help-open{overflow:visible}
+.kpi-card.help-open .kpi-help-popover{display:block}
 
 /* ── CASH SIGNAL CARD ── */
 .risk-badge-card{grid-column:span 2;display:flex;align-items:center;gap:20px;background:var(--black-2);padding:20px 24px}
@@ -291,7 +295,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="kpi-card"><div class="kpi-label">Total Outstanding</div><div class="kpi-value blue" id="rie-outstanding">KES 3.23M</div><div class="kpi-sub">Gross receivables</div></div>
   <div class="kpi-card"><div class="kpi-label">Overdue 31+ Days</div><div class="kpi-value danger" id="rie-overdue">KES 2.70M</div><div class="kpi-sub">Excludes 0-30 day receivables</div></div>
   <div class="kpi-card"><div class="kpi-label">Overdue %</div><div class="kpi-value amber" id="rie-od-pct">83.6%</div><div class="kpi-sub">31+ days / outstanding</div></div>
-  <div class="kpi-card"><div class="kpi-label">Portfolio Risk Score</div><div class="kpi-value danger" id="rie-risk-score">58.4</div><div class="kpi-sub" id="rie-risk-level">HIGH</div></div>
+  <div class="kpi-card"><button class="kpi-help" type="button" aria-label="Explain portfolio risk score">?</button><div class="kpi-help-popover">Portfolio Risk Score = overdue percentage + aging severity + concentration penalty. Aging severity adds 2.5 points for each account over 60 days, capped at 15 points. Concentration adds 5 points only if the largest buyer is more than 40% of total outstanding.</div><div class="kpi-label">Portfolio Risk Score</div><div class="kpi-value danger" id="rie-risk-score">58.4</div><div class="kpi-sub" id="rie-risk-level">HIGH</div></div>
   <div class="kpi-card risk-badge-card">
     <div class="risk-badge PRESSURE" id="rie-signal-badge">PRESSURE</div>
     <div class="risk-badge-info">
@@ -300,7 +304,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     </div>
   </div>
   <div class="kpi-card"><div class="kpi-label">Largest Single Exposure</div><div class="kpi-value amber" id="rie-largest">KES 620K</div><div class="kpi-sub" id="rie-largest-name">Largest unpaid invoice</div></div>
-  <div class="kpi-card"><div class="kpi-label">Top Buyer Concentration</div><div class="kpi-value amber" id="rie-buyer-conc">19.2%</div><div class="kpi-sub" id="rie-top-buyer-name">% of total outstanding</div></div>
+  <div class="kpi-card"><button class="kpi-help" type="button" aria-label="Explain top buyer concentration">?</button><div class="kpi-help-popover">Top Buyer Concentration shows how much of total unpaid receivables sits with the single largest buyer. Formula: largest buyer outstanding balance divided by total outstanding receivables.</div><div class="kpi-label">Top Buyer Concentration</div><div class="kpi-value amber" id="rie-buyer-conc">19.2%</div><div class="kpi-sub" id="rie-top-buyer-name">% of total outstanding</div></div>
   <div class="kpi-card"><div class="kpi-label">High Risk Accounts</div><div class="kpi-value danger" id="rie-accts60">2</div><div class="kpi-sub">Escalation required</div></div>
 </div>
 
@@ -1024,6 +1028,21 @@ async function refreshAll() {
 
 // Store trend chart ref for live updates
 window._trendChart = window._trendChart || null;
+
+document.querySelectorAll('.kpi-help').forEach(btn => {
+  btn.addEventListener('click', event => {
+    event.stopPropagation();
+    const card = btn.closest('.kpi-card');
+    document.querySelectorAll('.kpi-card.help-open').forEach(openCard => {
+      if (openCard !== card) openCard.classList.remove('help-open');
+    });
+    card.classList.toggle('help-open');
+  });
+});
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.kpi-card.help-open').forEach(card => card.classList.remove('help-open'));
+});
 
 // Kick off live data
 refreshAll();
