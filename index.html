@@ -289,14 +289,14 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 <div class="kpi-grid">
   <div class="kpi-card"><div class="kpi-label">Total Outstanding</div><div class="kpi-value blue" id="rie-outstanding">KES 3.23M</div><div class="kpi-sub">Gross receivables</div></div>
-  <div class="kpi-card"><div class="kpi-label">Total Overdue</div><div class="kpi-value danger" id="rie-overdue">KES 2.70M</div><div class="kpi-sub">Past payment date</div></div>
-  <div class="kpi-card"><div class="kpi-label">Overdue %</div><div class="kpi-value amber" id="rie-od-pct">83.6%</div><div class="kpi-sub">Of total portfolio</div></div>
+  <div class="kpi-card"><div class="kpi-label">Overdue 31+ Days</div><div class="kpi-value danger" id="rie-overdue">KES 2.70M</div><div class="kpi-sub">Excludes 0-30 day receivables</div></div>
+  <div class="kpi-card"><div class="kpi-label">Overdue %</div><div class="kpi-value amber" id="rie-od-pct">83.6%</div><div class="kpi-sub">31+ days / outstanding</div></div>
   <div class="kpi-card"><div class="kpi-label">Portfolio Risk Score</div><div class="kpi-value danger" id="rie-risk-score">58.4</div><div class="kpi-sub" id="rie-risk-level">HIGH</div></div>
   <div class="kpi-card risk-badge-card">
     <div class="risk-badge PRESSURE" id="rie-signal-badge">PRESSURE</div>
     <div class="risk-badge-info">
       <div class="risk-badge-title">CASH RISK SIGNAL</div>
-      <div class="risk-badge-desc">Collection lag creating working capital pressure across hospital portfolio</div>
+      <div class="risk-badge-desc">Collection lag increasing overdue exposure across hospital portfolio</div>
     </div>
   </div>
   <div class="kpi-card"><div class="kpi-label">Largest Single Exposure</div><div class="kpi-value amber" id="rie-largest">KES 620K</div><div class="kpi-sub">Parklands Orthopaedic Hospital</div></div>
@@ -312,13 +312,13 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 </div>
 
 <!-- AGING -->
-<div class="section-header"><h2>AGING BREAKDOWN</h2><span class="section-tag">Receivables Age</span></div>
+<div class="section-header"><h2>RECEIVABLES AGING</h2><span class="section-tag">Total Receivables Age</span></div>
 <div class="aging-grid" style="margin-bottom:40px">
-  <div class="aging-card"><div class="aging-band">0–30 Days</div><div class="aging-amount" id="rie-aging-030">KES 510K</div><div class="aging-bar-track"><div class="aging-bar-fill safe" id="rie-bar-030" style="width:16%"></div></div></div>
+  <div class="aging-card"><div class="aging-band">Current / 0-30 Days</div><div class="aging-amount" id="rie-aging-030">KES 510K</div><div class="aging-bar-track"><div class="aging-bar-fill safe" id="rie-bar-030" style="width:16%"></div></div></div>
   <div class="aging-card"><div class="aging-band">31–60 Days</div><div class="aging-amount" id="rie-aging-3160">KES 1.08M</div><div class="aging-bar-track"><div class="aging-bar-fill caution" id="rie-bar-3160" style="width:33%"></div></div></div>
   <div class="aging-card"><div class="aging-band">61–90 Days</div><div class="aging-amount" id="rie-aging-6190">KES 285K</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-6190" style="width:9%"></div></div></div>
   <div class="aging-card"><div class="aging-band">90+ Days</div><div class="aging-amount" id="rie-aging-90p">KES 840K</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-90p" style="width:26%"></div></div></div>
-  <div class="aging-card"><div class="aging-band">60+ Amount</div><div class="aging-amount" id="rie-aging-60p">KES 1.13M</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-60p" style="width:35%"></div></div></div>
+  <div class="aging-card"><div class="aging-band">60+ Exposure</div><div class="aging-amount" id="rie-aging-60p">KES 1.13M</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-60p" style="width:35%"></div></div></div>
   <div class="aging-card"><div class="aging-band">Accounts &gt; 60 Days</div><div class="aging-amount" id="rie-aging-accts">2 accts</div><div class="aging-bar-track"><div class="aging-bar-fill caution" id="rie-bar-accts" style="width:20%"></div></div></div>
 </div>
 
@@ -335,7 +335,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
   <div class="exec-signal-item">
     <div class="exec-label">Management Priority</div>
-    <div class="exec-text" id="rie-exec-prio">Clear the 90+ book before end of June to protect working capital cycle. Prioritise Parklands Orthopaedic (KES 620K) and Westgate Specialist (KES 412K) with management calls.</div>
+    <div class="exec-text" id="rie-exec-prio">Clear the 90+ book before month end. Prioritise the largest aged accounts for management calls.</div>
   </div>
 </div>
 
@@ -785,7 +785,7 @@ async function fetchLiveRIE() {
   sys.forEach(r => { if(r[0]) metric[r[0].trim()] = r[1]; });
 
   const outstanding = parseN(metric['Total Outstanding']);
-  const overdue     = parseN(metric['Overdue Total']);
+  const overdue     = parseN(metric['Overdue Total'] ?? metric['Risky Overdue Total'] ?? metric['31+ Overdue Total']);
   const overduePct  = parseN(metric['Overdue %']);
   const riskScore   = parseN(metric['Portfolio Risk Score']);
   const riskLevel   = metric['Portfolio Risk Level'] || 'HIGH';
@@ -797,7 +797,7 @@ async function fetchLiveRIE() {
   const a3160       = parseN(metric['31-60 Amount']);
   const a6190       = parseN(metric['61-90 Amount']);
   const a90p        = parseN(metric['90+ Amount']);
-  const a60p        = parseN(metric['60+ Amount']);
+  const a60p        = parseN(metric['60+ Exposure'] ?? metric['60+ Amount']);
   const topRisk     = metric['Top Risk Driver'] || '';
   const recAction   = metric['Recommended Action'] || '';
   const mgmtPrio    = metric['Management Priority This Week'] || '';
