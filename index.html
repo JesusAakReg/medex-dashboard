@@ -299,8 +299,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <div class="risk-badge-desc">Collection lag increasing overdue exposure across hospital portfolio</div>
     </div>
   </div>
-  <div class="kpi-card"><div class="kpi-label">Largest Single Exposure</div><div class="kpi-value amber" id="rie-largest">KES 620K</div><div class="kpi-sub">Parklands Orthopaedic Hospital</div></div>
-  <div class="kpi-card"><div class="kpi-label">Top Buyer Concentration</div><div class="kpi-value amber" id="rie-buyer-conc">19.2%</div><div class="kpi-sub">% of total outstanding</div></div>
+  <div class="kpi-card"><div class="kpi-label">Largest Single Exposure</div><div class="kpi-value amber" id="rie-largest">KES 620K</div><div class="kpi-sub" id="rie-largest-name">Largest unpaid invoice</div></div>
+  <div class="kpi-card"><div class="kpi-label">Top Buyer Concentration</div><div class="kpi-value amber" id="rie-buyer-conc">19.2%</div><div class="kpi-sub" id="rie-top-buyer-name">% of total outstanding</div></div>
   <div class="kpi-card"><div class="kpi-label">High Risk Accounts</div><div class="kpi-value danger" id="rie-accts60">2</div><div class="kpi-sub">Escalation required</div></div>
 </div>
 
@@ -791,6 +791,9 @@ async function fetchLiveRIE() {
   const riskLevel   = metric['Portfolio Risk Level'] || 'HIGH';
   const cashSignal  = metric['Cash Risk Signal'] || 'Pressure';
   const largest     = parseN(metric['Largest Single Exposure']);
+  const largestBuyer = metric['Largest Exposure Buyer'] || '';
+  const largestProject = metric['Largest Exposure Project'] || '';
+  const topBuyer    = metric['Top Buyer'] || largestBuyer;
   const buyerConc   = parseN(metric['Top Buyer Concentration %']);
   const accts60     = parseN(metric['Accounts Over 60 Days']);
   const a030        = parseN(metric['0-30 Amount']);
@@ -809,7 +812,9 @@ async function fetchLiveRIE() {
   setText('rie-risk-score',  riskScore.toFixed(1));
   setText('rie-risk-level',  riskLevel);
   setText('rie-largest',     fmtKES(largest));
+  setText('rie-largest-name', [largestBuyer, largestProject].filter(Boolean).join(' · ') || 'Largest unpaid invoice');
   setText('rie-buyer-conc',  buyerConc.toFixed(1)+'%');
+  setText('rie-top-buyer-name', topBuyer ? `${topBuyer} share of outstanding` : '% of total outstanding');
   setText('rie-accts60',     accts60+'');
 
   // Signal badge
