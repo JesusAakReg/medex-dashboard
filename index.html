@@ -441,7 +441,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     <div class="cf-meta-row"><span class="cf-meta-key">Action</span><span class="cf-meta-val green" id="cf-banner-action">Escalate overdue hospital accounts. Request advance on Chattanooga restock. Review DJO Global terms.</span></div>
   </div>
   <div class="cf-headline">
-    <h3 id="cf-banner-headline">KSh 3.2M working capital trough covered by KSh 10.0M facility with KSh 6.8M headroom.</h3>
+    <h3 id="cf-banner-headline">KSh 3.2M timing gap created by delayed collections; KSh 10.0M facility leaves KSh 6.8M liquidity headroom.</h3>
     <p>Facility covers trough at current assumptions, dependent on hospital collection timing improving to 30-day average.</p>
   </div>
   <div class="cf-outlook">
@@ -453,7 +453,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       Finance drawn: <span>KSh 2.8M</span><br>
       Collections <span id="cf-banner-collections">72%</span> vs forecast<br>
       Overdue exposure <span id="cf-banner-overdue">—</span><br>
-      <span id="cf-banner-priority">Draw on WC facility only after W6. Hold KSh 2M buffer. Review supplier terms this month.</span>
+      <span id="cf-banner-priority">Use facility only if collections remain delayed after W6. Hold KSh 2M buffer and review supplier terms this month.</span>
     </div>
   </div>
 </div>
@@ -463,10 +463,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="kpi-card"><div class="kpi-label">Monthly Revenue</div><div class="kpi-value blue" id="cf-kpi-rev">KSh 8.4M</div><div class="kpi-sub">Invoiced to hospitals &amp; clinics</div></div>
   <div class="kpi-card"><div class="kpi-label">Monthly COGS</div><div class="kpi-value" style="color:var(--white)" id="cf-kpi-cogs">KSh 4.9M</div><div class="kpi-sub">DJO Global, Chattanooga, freight</div></div>
   <div class="kpi-card"><div class="kpi-label">Gross Margin</div><div class="kpi-value green" id="cf-kpi-margin">42.0%</div><div class="kpi-sub">KSh 3.5M gross profit</div></div>
-  <div class="kpi-card"><div class="kpi-label">Peak Funding Gap</div><div class="kpi-value danger">(KSh 3.2M)</div><div class="kpi-sub">Worst weekly shortfall</div></div>
-  <div class="kpi-card"><div class="kpi-label">Facility Headroom</div><div class="kpi-value amber" id="cf-kpi-headroom">KSh 6.8M</div><div class="kpi-sub">Facility minus peak gap</div></div>
+  <div class="kpi-card"><div class="kpi-label">Peak Cash Timing Gap</div><div class="kpi-value danger">(KSh 3.2M)</div><div class="kpi-sub">Worst weekly cash shortfall before liquidity support</div></div>
+  <div class="kpi-card"><div class="kpi-label">Liquidity Headroom</div><div class="kpi-value amber" id="cf-kpi-headroom">KSh 6.8M</div><div class="kpi-sub">Available facility after peak cash gap</div></div>
   <div class="kpi-card"><div class="kpi-label">Collections vs Forecast</div><div class="kpi-value amber" id="cf-kpi-collrate">72.0%</div><div class="kpi-sub">Cash received vs forecast</div></div>
-  <div class="kpi-card"><div class="kpi-label">Cashflow Status</div><div class="kpi-value amber" style="font-size:18px">WATCH</div><div class="kpi-sub">Collection lag critical</div></div>
+  <div class="kpi-card"><div class="kpi-label">Cashflow Status</div><div class="kpi-value amber" style="font-size:18px">WATCH</div><div class="kpi-sub">Collections delayed, margin still positive</div></div>
 </div>
 
 <!-- Management Brief CF -->
@@ -481,7 +481,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
   <div class="exec-signal-item">
     <div class="exec-label">Management Priority</div>
-    <div class="exec-text" id="cf-exec-prio">Draw on WC facility only after W6. Hold KSh 2M buffer. Review supplier terms this month.</div>
+    <div class="exec-text" id="cf-exec-prio">Use facility only if collections remain delayed after W6. Hold KSh 2M buffer and review supplier terms this month.</div>
   </div>
 </div>
 
@@ -506,12 +506,12 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     </div>
   </div>
   <div class="signal-card">
-    <div class="signal-title">Funding Structure</div>
+    <div class="signal-title">Liquidity Cover</div>
     <div class="signal-inner">
-      <div><div class="sm-label">Facility</div><div class="sm-val blue" id="cf-sig-facility">KSh 10.0M</div></div>
-      <div><div class="sm-label">Peak Required</div><div class="sm-val danger" id="cf-sig-peak">KSh 3.2M</div></div>
+      <div><div class="sm-label">WC Facility</div><div class="sm-val blue" id="cf-sig-facility">KSh 10.0M</div></div>
+      <div><div class="sm-label">Peak Gap</div><div class="sm-val danger" id="cf-sig-peak">KSh 3.2M</div></div>
       <div><div class="sm-label">Headroom</div><div class="sm-val green" id="cf-sig-headroom">KSh 6.8M</div></div>
-      <div><div class="sm-label">Covered</div><div class="sm-val green">YES</div></div>
+      <div><div class="sm-label">Covered?</div><div class="sm-val green">YES</div></div>
     </div>
   </div>
 </div>
@@ -534,7 +534,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 <!-- Two charts -->
 <div class="charts-equal">
   <div class="chart-panel" style="margin-bottom:0">
-    <h3>Funding Gap by Week</h3>
+    <h3>Cash Timing Gap by Week</h3>
     <div class="chart-sub">Negative equals cash shortfall · Peak W5 −KSh 3.2M</div>
     <div style="position:relative;height:180px"><canvas id="cfGapChart"></canvas></div>
   </div>
@@ -556,7 +556,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     <span class="cf-table-hint">Red = peak gap · Green = first recovery</span>
   </div>
   <table class="cf-table">
-    <thead><tr><th style="text-align:left">Week</th><th>Inflows</th><th>Outflows</th><th>Net</th><th>Equity / Finance</th><th>Cumulative</th><th>Funding Gap</th></tr></thead>
+    <thead><tr><th style="text-align:left">Week</th><th>Inflows</th><th>Outflows</th><th>Net</th><th>Equity / Finance</th><th>Cumulative</th><th>Cash Timing Gap</th></tr></thead>
     <tbody id="cf-tbody"></tbody>
   </table>
 </div>
@@ -585,7 +585,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     <div class="assumption-row"><span class="assumption-key">Equity buffer</span><span class="assumption-val">KSh 2,000,000</span></div>
     <div class="assumption-row"><span class="assumption-key">WC facility</span><span class="assumption-val">KSh 10,000,000</span></div>
     <div class="assumption-row"><span class="assumption-key">Interest rate</span><span class="assumption-val">1.5% per month</span></div>
-    <div class="assumption-row"><span class="assumption-key">Facility coverage</span><span class="assumption-val">3.12x</span></div>
+    <div class="assumption-row"><span class="assumption-key">Liquidity cover</span><span class="assumption-val">3.12x</span></div>
     <div class="assumption-row"><span class="assumption-key">Supplier terms</span><span class="assumption-val">Global Suppliers Ltd/Elysium Ltd</span></div>
   </div>
 </div>
@@ -707,7 +707,7 @@ const gaps = cumulatives.map(v=>Math.min(v,0));
 new Chart(gapCtx, {
   type:'bar',
   data:{labels:weeks,datasets:[{
-    label:'Funding Gap',data:gaps,
+    label:'Cash Timing Gap',data:gaps,
     backgroundColor:gaps.map((_,i)=>i===peakIdx?'rgba(224,52,52,0.95)':gaps[i]<0?'rgba(224,52,52,0.45)':'rgba(46,204,113,0.5)'),
     borderRadius:3
   }]},
@@ -979,7 +979,7 @@ async function fetchLiveCF() {
     setText('cf-sig-facility', fmtKSh(wcFacility));
     setText('cf-sig-headroom', fmtKSh(headroom));
     setText('cf-sig-peak',     fmtKSh(Math.abs(peakGap)));
-    setText('cf-banner-headline', `${fmtKSh(Math.abs(peakGap))} working capital trough covered by ${fmtKSh(wcFacility)} facility with ${fmtKSh(headroom)} headroom.`);
+    setText('cf-banner-headline', `${fmtKSh(Math.abs(peakGap))} timing gap created by delayed collections; ${fmtKSh(wcFacility)} facility leaves ${fmtKSh(headroom)} liquidity headroom.`);
   }
 
   // Cashflow management brief from Dashboard tab
