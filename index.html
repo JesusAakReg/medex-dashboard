@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meridian Healthcare — Distribution Operations · Live Dashboard</title>
+<title>Medex East Africa â€” Cash & Operations Control Tower</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -43,7 +43,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 .wrapper{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 32px 80px}
 
-/* ── TOPBAR ── */
+/* â”€â”€ TOPBAR â”€â”€ */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0 18px;border-bottom:1px solid var(--border);margin-bottom:32px;gap:16px;flex-wrap:wrap}
 .topbar-left{display:flex;align-items:center;gap:16px}
 .logo-mark{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;color:var(--amber);display:flex;align-items:center;gap:8px}
@@ -58,17 +58,17 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .nav-link{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:rgba(240,165,0,0.7);text-decoration:none;border:1px solid rgba(240,165,0,0.25);padding:4px 10px;transition:color 0.2s}
 .nav-link:hover{color:var(--amber)}
 
-/* ── PROOF STRIP ── */
+/* â”€â”€ PROOF STRIP â”€â”€ */
 .proof-strip{display:flex;align-items:center;flex-wrap:wrap;gap:20px;background:var(--amber-glow);border:1px solid rgba(240,165,0,0.12);padding:10px 20px;margin-bottom:40px}
 .proof-item{font-family:var(--mono);font-size:10px;color:var(--white-30);display:flex;align-items:center;gap:7px;letter-spacing:0.04em}
 .proof-item .pip{width:4px;height:4px;border-radius:50%;background:var(--amber);flex-shrink:0}
 
-/* ── SECTION HEADERS ── */
+/* â”€â”€ SECTION HEADERS â”€â”€ */
 .section-header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .section-header h2{font-family:var(--display);font-size:32px;color:var(--white);letter-spacing:0.03em;line-height:1}
 .section-tag{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.16em;text-transform:uppercase;border:1px solid rgba(240,165,0,0.25);padding:3px 9px}
 
-/* ── KPI GRID ── */
+/* â”€â”€ KPI GRID â”€â”€ */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
 .kpi-card{background:var(--black-2);padding:20px 22px;position:relative;overflow:hidden;opacity:0;transform:translateY(16px);animation:card-in 0.5s ease forwards;transition:background 0.2s}
 .kpi-card:hover{background:var(--black-3)}
@@ -84,7 +84,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .kpi-card.help-open{overflow:visible}
 .kpi-card.help-open .kpi-help-popover{display:block}
 
-/* ── CASH SIGNAL CARD ── */
+/* â”€â”€ CASH SIGNAL CARD â”€â”€ */
 .risk-badge-card{grid-column:span 2;display:flex;align-items:center;gap:20px;background:var(--black-2);padding:20px 24px}
 .risk-badge{font-family:var(--mono);font-size:12px;font-weight:500;padding:8px 18px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
 .risk-badge.DANGER{background:var(--red-dim);color:var(--red);border:1px solid rgba(224,52,52,0.3);animation:pulse-red 1.6s ease-in-out infinite}
@@ -95,7 +95,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .risk-badge-title{font-family:var(--display);font-size:18px;color:var(--white);margin-bottom:4px;letter-spacing:0.03em}
 .risk-badge-desc{font-family:var(--mono);font-size:10px;color:var(--white-30);letter-spacing:0.04em}
 
-/* ── AGING ── */
+/* â”€â”€ AGING â”€â”€ */
 .aging-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
 .aging-card{background:var(--black-2);padding:18px 20px;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards;transition:background 0.2s}
 .aging-card:hover{background:var(--black-3)}
@@ -106,20 +106,20 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .aging-bar-fill{height:100%;width:0;transition:width 1.4s cubic-bezier(0.4,0,0.2,1)}
 .aging-bar-fill.safe{background:var(--green)}.aging-bar-fill.caution{background:var(--amber)}.aging-bar-fill.risk{background:var(--red)}
 
-/* ── EXEC SIGNAL ── */
+/* â”€â”€ EXEC SIGNAL â”€â”€ */
 .exec-signal{background:var(--black-2);border:1px solid var(--border);padding:28px;margin-bottom:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards 1.0s}
 .exec-signal-item{border-left:2px solid var(--border);padding-left:20px}
 .exec-signal-item:first-child{border-left-color:var(--red)}.exec-signal-item:nth-child(2){border-left-color:var(--amber)}.exec-signal-item:nth-child(3){border-left-color:var(--blue)}
 .exec-label{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:8px}
 .exec-text{font-family:var(--heading);font-size:13px;color:var(--white-60);line-height:1.6}
 
-/* ── TWO-COL ── */
+/* â”€â”€ TWO-COL â”€â”€ */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
 .panel{background:var(--black-2);padding:24px;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards}
 .panel:nth-child(1){animation-delay:.8s}.panel:nth-child(2){animation-delay:.9s}
 .panel h3{font-family:var(--display);font-size:22px;color:var(--white);margin-bottom:18px;letter-spacing:0.03em}
 
-/* ── TABLES ── */
+/* â”€â”€ TABLES â”€â”€ */
 .rie-table{width:100%;border-collapse:collapse}
 .rie-table th{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.12em;text-transform:uppercase;padding:0 10px 10px;text-align:left;border-bottom:1px solid var(--border);font-weight:600}
 .rie-table td{font-family:var(--mono);font-size:11px;color:var(--white-60);padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle}
@@ -127,7 +127,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .rie-table tr:hover td{background:var(--amber-glow)}
 .td-danger{color:var(--red)!important}.td-amber{color:var(--amber)!important}.td-green{color:var(--green)!important}
 
-/* ── TAGS ── */
+/* â”€â”€ TAGS â”€â”€ */
 .tag{font-family:var(--mono);font-size:8px;font-weight:500;padding:3px 7px;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;display:inline-block}
 .tag.legal{background:var(--red-dim);color:var(--red);border:1px solid rgba(224,52,52,0.25)}
 .tag.urgent{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(240,165,0,0.25)}
@@ -138,23 +138,32 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .tag.ok{background:rgba(46,204,113,0.08);color:var(--green);border:1px solid rgba(46,204,113,0.2)}
 .rank-num{width:22px;height:22px;background:var(--black-3);border:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--white-30);display:inline-flex;align-items:center;justify-content:center}
 
-/* ── FULL SECTION ── */
+/* â”€â”€ FULL SECTION â”€â”€ */
 .full-section{background:var(--black-2);border:1px solid var(--border);padding:24px;margin-bottom:40px;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards}
 .full-section h3{font-family:var(--display);font-size:22px;color:var(--white);margin-bottom:18px;letter-spacing:0.03em}
 
-/* ── SETTINGS ── */
+/* â”€â”€ SETTINGS â”€â”€ */
 .settings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
 .setting-item{background:var(--black-3);padding:14px 16px;transition:background 0.2s}
 .setting-item:hover{background:var(--panel)}
 .setting-key{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
 .setting-val{font-family:var(--mono);font-size:18px;color:var(--amber)}
 
-/* ── DIVIDER ── */
+/* â”€â”€ OPERATIONAL CONTROL TOWER â”€â”€ */
+.ops-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:24px}
+.ops-card{background:var(--black-2);padding:20px 22px;min-height:136px}
+.ops-card h3{font-family:var(--display);font-size:20px;letter-spacing:.04em;margin-bottom:14px}
+.ops-row{display:flex;justify-content:space-between;gap:14px;padding:5px 0;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--white-30)}
+.ops-row:last-child{border-bottom:0}.ops-row strong{font-size:12px;color:var(--white);font-weight:500;text-align:right}
+.ops-row strong.risk{color:var(--red)}.ops-row strong.watch{color:var(--amber)}.ops-row strong.good{color:var(--green)}
+.ops-note{font-family:var(--mono);font-size:10px;color:var(--white-30);margin:-10px 0 24px}
+
+/* â”€â”€ DIVIDER â”€â”€ */
 .section-divider{border:none;border-top:1px solid var(--border);margin:48px 0;position:relative}
 .section-divider::after{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:60px;height:1px;background:var(--amber);opacity:0.4}
 
-/* ── CASHFLOW SECTION ── */
-/* Inherits RIE design system exactly — same variables, same card style */
+/* â”€â”€ CASHFLOW SECTION â”€â”€ */
+/* Inherits RIE design system exactly â€” same variables, same card style */
 .cf-position-card{background:var(--black-2);border:1px solid var(--border);padding:28px;margin-bottom:32px;display:grid;grid-template-columns:auto 1fr auto auto;gap:24px;align-items:start}
 .cf-status-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 20px;min-width:100px;border-radius:2px}
 .badge-active{background:var(--amber-dim);border:1px solid rgba(240,165,0,0.3)}
@@ -173,7 +182,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .cf-outlook-meta{font-family:var(--mono);font-size:10px;color:var(--white-30);line-height:2}
 .cf-outlook-meta span{color:var(--white-60)}
 
-/* ── SIGNALS STRIP ── */
+/* â”€â”€ SIGNALS STRIP â”€â”€ */
 .signals-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
 .signal-card{background:var(--black-2);padding:20px 22px}
 .signal-title{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px}
@@ -182,7 +191,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .sm-val{font-family:var(--mono);font-size:16px;font-weight:500;color:var(--white);line-height:1.2}
 .sm-val.danger{color:var(--red)}.sm-val.amber{color:var(--amber)}.sm-val.green{color:var(--green)}.sm-val.blue{color:var(--blue)}
 
-/* ── CHART PANEL ── */
+/* â”€â”€ CHART PANEL â”€â”€ */
 .chart-panel{background:var(--black-2);border:1px solid var(--border);padding:24px;margin-bottom:24px}
 .chart-panel h3{font-family:var(--mono);font-size:9px;color:var(--white);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
 .chart-sub{font-family:var(--mono);font-size:10px;color:var(--white);margin-bottom:18px;font-style:italic}
@@ -194,7 +203,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .inflow-fill{height:100%}
 .inflow-amt{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green);min-width:80px;text-align:right}
 
-/* ── CF TABLE ── */
+/* â”€â”€ CF TABLE â”€â”€ */
 .cf-table-wrap{background:var(--black-2);border:1px solid var(--border);margin-bottom:32px}
 .cf-table-hdr{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border)}
 .cf-table-hdr-title{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.12em;text-transform:uppercase}
@@ -212,488 +221,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .rec-label{font-size:8px;color:var(--green);font-weight:700;letter-spacing:0.08em;margin-left:8px;text-transform:uppercase}
 .neg{color:var(--red)!important}.pos{color:var(--green)!important}
 
-/* ── METRICS STRIP ── */
+/* â”€â”€ METRICS STRIP â”€â”€ */
 .metrics-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:32px}
 .metric-tile{background:var(--black-2);padding:18px 20px}
-.mt-label{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
-.mt-val{font-family:var(--mono);font-size:22px;font-weight:500;line-height:1;margin-bottom:4px}
-.mt-val.danger{color:var(--red)}.mt-val.amber{color:var(--amber)}.mt-val.green{color:var(--green)}
-.mt-sub{font-family:var(--mono);font-size:9px;color:var(--white-30)}
-
-/* ── ASSUMPTIONS ── */
-.assumptions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:32px}
-.assumption-card{background:var(--black-2);padding:20px 22px}
-.assumption-section-label{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px}
-.assumption-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border)}
-.assumption-row:last-child{border-bottom:none}
-.assumption-key{font-family:var(--heading);font-size:11px;color:var(--white-30)}
-.assumption-val{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--white-60)}
-
-/* ── COST TRACKER ── */
-.ct-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-bottom:none}
-.ct-sum-cell{background:var(--black-2);padding:16px 18px}
-.ct-sum-label{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
-.ct-sum-val{font-family:var(--mono);font-size:20px;font-weight:500}
-.cf-table td.bar-cell{position:relative}
-.bar-inline{display:inline-block;width:48px;height:4px;background:rgba(255,255,255,0.06);vertical-align:middle;margin-left:6px;overflow:hidden}
-.bar-inline-fill{height:100%;display:block}
-
-/* ── OUTCOMES BLOCK ── */
-.outcomes-block{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
-.outcome-card{background:var(--black-2);padding:22px 24px;border-top:2px solid transparent;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards;transition:background 0.2s}
-.outcome-card:hover{background:var(--black-3)}
-.outcome-card:nth-child(1){animation-delay:.1s;border-top-color:var(--red)}.outcome-card:nth-child(2){animation-delay:.2s;border-top-color:var(--amber)}.outcome-card:nth-child(3){animation-delay:.3s;border-top-color:var(--blue)}
-.outcome-num{font-family:var(--display);font-size:48px;color:var(--white);line-height:1;margin-bottom:4px}
-.outcome-label{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:8px}
-.outcome-desc{font-family:var(--heading);font-size:12px;color:var(--white-30);line-height:1.6}
-.outcome-desc strong{color:var(--white-60)}
-
-/* ── FOOTER ── */
-.footer{border-top:1px solid var(--border);padding-top:20px;margin-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.footer-brand{font-family:var(--mono);font-size:10px;color:var(--white-30);letter-spacing:0.06em;font-style:italic}
-.footer-links{display:flex;gap:16px}
-</style>
-</head>
-<body>
-<div class="wrapper">
-
-<!-- TOPBAR -->
-<header class="topbar">
-  <div class="topbar-left">
-    <a href="https://profitlensadvisory.com" target="_blank" style="text-decoration:none">
-      <img src="https://www.profitlensadvisory.com/pl-logo-nav.png" alt="ProfitLens" style="height:32px">
-    </a>
-    <span style="width:1px;height:18px;background:rgba(240,165,0,0.3);display:inline-block"></span>
-    <div class="logo-mark"><div class="logo-dot"></div>MERIDIAN <span style="font-size:9px;color:rgba(240,165,0,0.4);letter-spacing:0.1em">// FY2026</span></div>
-    <div class="brand">DISTRIBUTION <span class="amber">OPERATIONS</span></div>
-  </div>
-  <div class="topbar-meta">
-    <div class="meta-pill"><div class="live-dot"></div>LIVE</div>
-    <div class="meta-pill">UPDATED: <strong id="updated-time">—</strong></div>
-    <a class="nav-link" href="https://profitlensadvisory.com/demo/" target="_blank">INDUSTRY SELECTOR →</a>
-    <a class="nav-link" href="https://linkedin.com/company/profitlens-advisory/" target="_blank">LINKEDIN →</a>
-  </div>
-</header>
-
-<!-- PROOF STRIP -->
-<div class="proof-strip">
-  <div class="proof-item"><div class="pip"></div>Live portfolio data · auto-refreshes every 60 seconds</div>
-  <div class="proof-item"><div class="pip"></div>Automated WhatsApp &amp; email alerts on breach</div>
-  <div class="proof-item"><div class="pip"></div>Management summary generated every Monday morning</div>
-  <div class="proof-item"><div class="pip"></div>Receivables + working capital in one system</div>
-</div>
-
-<!-- ══════════════════════════════════════════════
-     PART 1 — RECEIVABLES INTELLIGENCE ENGINE
-════════════════════════════════════════════════ -->
-<div class="section-header">
-  <h2>PORTFOLIO OVERVIEW</h2>
-  <span class="section-tag">Receivables Intelligence Engine</span>
-</div>
-
-<div class="kpi-grid">
-  <div class="kpi-card"><div class="kpi-label">Total Outstanding</div><div class="kpi-value blue" id="rie-outstanding">KES 3.23M</div><div class="kpi-sub">Gross receivables</div></div>
-  <div class="kpi-card"><div class="kpi-label">Overdue 31+ Days</div><div class="kpi-value danger" id="rie-overdue">KES 2.70M</div><div class="kpi-sub">Excludes 0-30 day receivables</div></div>
-  <div class="kpi-card"><div class="kpi-label">Overdue %</div><div class="kpi-value amber" id="rie-od-pct">83.6%</div><div class="kpi-sub">31+ days / outstanding</div></div>
-  <div class="kpi-card"><button class="kpi-help" type="button" aria-label="Explain portfolio risk score">?</button><div class="kpi-help-popover">Portfolio Risk Score = overdue percentage + aging severity + concentration penalty. Aging severity adds 2.5 points for each account over 60 days, capped at 15 points. Concentration adds 5 points only if the largest buyer is more than 40% of total outstanding.</div><div class="kpi-label">Portfolio Risk Score</div><div class="kpi-value danger" id="rie-risk-score">58.4</div><div class="kpi-sub" id="rie-risk-level">HIGH</div></div>
-  <div class="kpi-card risk-badge-card">
-    <div class="risk-badge PRESSURE" id="rie-signal-badge">PRESSURE</div>
-    <div class="risk-badge-info">
-      <div class="risk-badge-title">CASH RISK SIGNAL</div>
-      <div class="risk-badge-desc">Collection lag increasing overdue exposure across hospital portfolio</div>
-    </div>
-  </div>
-  <div class="kpi-card"><div class="kpi-label">Largest Single Exposure</div><div class="kpi-value amber" id="rie-largest">KES 620K</div><div class="kpi-sub" id="rie-largest-name">Largest unpaid invoice</div></div>
-  <div class="kpi-card"><button class="kpi-help" type="button" aria-label="Explain top buyer concentration">?</button><div class="kpi-help-popover">Top Buyer Concentration shows how much of total unpaid receivables sits with the single largest buyer. Formula: largest buyer outstanding balance divided by total outstanding receivables.</div><div class="kpi-label">Top Buyer Concentration</div><div class="kpi-value amber" id="rie-buyer-conc">19.2%</div><div class="kpi-sub" id="rie-top-buyer-name">% of total outstanding</div></div>
-  <div class="kpi-card"><div class="kpi-label">High Risk Accounts</div><div class="kpi-value danger" id="rie-accts60">2</div><div class="kpi-sub">Escalation required</div></div>
-</div>
-
-<!-- OUTCOMES -->
-<div class="outcomes-block">
-  <div class="outcome-card"><div class="outcome-num">Day 1</div><div class="outcome-label">Instant Visibility</div><div class="outcome-desc"><strong>Flag default months before</strong> it requires a legal team.</div></div>
-  <div class="outcome-card"><div class="outcome-num">3×</div><div class="outcome-label">Faster Escalation</div><div class="outcome-desc"><strong>Priority accounts ranked automatically</strong> — no manual triage required.</div></div>
-  <div class="outcome-card"><div class="outcome-num">0</div><div class="outcome-label">Manual Reports</div><div class="outcome-desc"><strong>Weekly management summaries assembled</strong> and delivered without human effort.</div></div>
-</div>
-
-<!-- AGING -->
-<div class="section-header"><h2>RECEIVABLES AGING</h2><span class="section-tag">Total Receivables Age</span></div>
-<div class="aging-grid" style="margin-bottom:40px">
-  <div class="aging-card"><div class="aging-band">Current / 0-30 Days</div><div class="aging-amount" id="rie-aging-030">KES 510K</div><div class="aging-bar-track"><div class="aging-bar-fill safe" id="rie-bar-030" style="width:16%"></div></div></div>
-  <div class="aging-card"><div class="aging-band">31–60 Days</div><div class="aging-amount" id="rie-aging-3160">KES 1.08M</div><div class="aging-bar-track"><div class="aging-bar-fill caution" id="rie-bar-3160" style="width:33%"></div></div></div>
-  <div class="aging-card"><div class="aging-band">61–90 Days</div><div class="aging-amount" id="rie-aging-6190">KES 285K</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-6190" style="width:9%"></div></div></div>
-  <div class="aging-card"><div class="aging-band">90+ Days</div><div class="aging-amount" id="rie-aging-90p">KES 840K</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-90p" style="width:26%"></div></div></div>
-  <div class="aging-card"><div class="aging-band">60+ Exposure</div><div class="aging-amount" id="rie-aging-60p">KES 1.13M</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-60p" style="width:35%"></div></div></div>
-  <div class="aging-card"><div class="aging-band">Accounts &gt; 60 Days</div><div class="aging-amount" id="rie-aging-accts">2 accts</div><div class="aging-bar-track"><div class="aging-bar-fill caution" id="rie-bar-accts" style="width:20%"></div></div></div>
-</div>
-
-<!-- MANAGEMENT BRIEF -->
-<div class="section-header"><h2>MANAGEMENT BRIEF</h2><span class="section-tag">Monday Signal</span></div>
-<div class="exec-signal">
-  <div class="exec-signal-item">
-    <div class="exec-label">Top Risk Driver</div>
-    <div class="exec-text" id="rie-exec-risk">Parklands Orthopaedic Hospital (91 days) and Riverside Road Specialist Clinic (105 days) are in Legal / Default Review territory. Combined exposure KES 840K at critical risk.</div>
-  </div>
-  <div class="exec-signal-item">
-    <div class="exec-label">Recommended Action</div>
-    <div class="exec-text" id="rie-exec-action">Issue Legal Notice to Limuru Road immediately. Issue Final Demand to Parklands Orthopaedic this week. Send Urgent Follow-Up to all 31–60 day accounts by Friday.</div>
-  </div>
-  <div class="exec-signal-item">
-    <div class="exec-label">Management Priority</div>
-    <div class="exec-text" id="rie-exec-prio">Clear the 90+ book before month end. Prioritise the largest aged accounts for management calls.</div>
-  </div>
-</div>
-
-<!-- BUYER + PROJECT EXPOSURE -->
-<div class="section-header"><h2>EXPOSURE DETAIL</h2><span class="section-tag">Customer &amp; Product Line</span></div>
-<div class="two-col">
-  <div class="panel">
-    <h3>CUSTOMER EXPOSURE</h3>
-    <table class="rie-table">
-      <thead><tr><th>Customer</th><th>Outstanding</th><th>Overdue</th><th>OD %</th></tr></thead>
-      <tbody id="rie-buyer-table">
-        <tr><td>Parklands Orthopaedic Hospital</td><td>KES 620K</td><td class="td-danger">KES 620K</td><td class="td-danger">100.0%</td></tr>
-        <tr><td>City Physio & Rehab</td><td>KES 510K</td><td class="td-danger">KES 510K</td><td class="td-danger">100.0%</td></tr>
-        <tr><td>Westgate Specialist Hospital</td><td>KES 412K</td><td class="td-danger">KES 412K</td><td class="td-danger">100.0%</td></tr>
-        <tr><td>Brightfield Children's Hospital</td><td>KES 390K</td><td class="td-danger">KES 390K</td><td class="td-danger">100.0%</td></tr>
-        <tr><td>Highridge Medical Centre</td><td>KES 340K</td><td class="td-danger">KES 340K</td><td class="td-danger">100.0%</td></tr>
-        <tr><td>ProMotion Rehab Centre</td><td>KES 310K</td><td>KES 0</td><td class="td-green">0.0%</td></tr>
-        <tr><td>Riverside Medical Centre</td><td>KES 285K</td><td class="td-danger">KES 285K</td><td class="td-danger">100.0%</td></tr>
-        <tr><td>Highland Mission Hospital</td><td>KES 275K</td><td class="td-danger">KES 275K</td><td class="td-danger">100.0%</td></tr>
-        <tr><td>Riverside Road Specialist Clinic</td><td>KES 220K</td><td class="td-danger">KES 220K</td><td class="td-danger">100.0%</td></tr>
-        <tr><td>Lavington Physio Clinic</td><td>KES 145K</td><td class="td-danger">KES 145K</td><td class="td-danger">100.0%</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="panel">
-    <h3>PRODUCT LINE RISK SUMMARY</h3>
-    <table class="rie-table">
-      <thead><tr><th>Product Line</th><th>Outstanding</th><th>OD %</th><th>Risk</th><th>Share</th></tr></thead>
-      <tbody id="rie-proj-table">
-        <tr><td>Orthopaedic</td><td>KES 1.36M</td><td class="td-danger">100.0%</td><td><span class="tag high">HIGH</span></td><td class="td-amber">42.2%</td></tr>
-        <tr><td>Physiotherapy</td><td>KES 1.12M</td><td class="td-danger">100.0%</td><td><span class="tag high">HIGH</span></td><td class="td-amber">34.7%</td></tr>
-        <tr><td>Mobility Aids</td><td>KES 1.02M</td><td>31.5%</td><td><span class="tag watch">WATCH</span></td><td>31.5%</td></tr>
-        <tr><td>Rehabilitation</td><td>KES 562K</td><td class="td-danger">100.0%</td><td><span class="tag watch">WATCH</span></td><td>17.4%</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- PRIORITY ACCOUNTS -->
-<div class="full-section" style="animation-delay:1.1s">
-  <h3>PRIORITY ESCALATION ACCOUNTS</h3>
-  <table class="rie-table">
-    <thead><tr><th>Rank</th><th>Ref</th><th>Customer</th><th>Product Line</th><th>Amount</th><th>Days OD</th><th>Action</th></tr></thead>
-    <tbody id="rie-prio-table">
-      <tr><td><span class="rank-num">1</span></td><td>INV-011</td><td>Riverside Road Specialist Clinic</td><td>Orthopaedic</td><td class="td-danger">KES 220K</td><td class="td-danger">105</td><td><span class="tag legal">Legal Notice</span></td></tr>
-      <tr><td><span class="rank-num">2</span></td><td>INV-004</td><td>Parklands Orthopaedic Hospital</td><td>Mobility Aids</td><td class="td-danger">KES 620K</td><td class="td-danger">91</td><td><span class="tag legal">Legal Notice</span></td></tr>
-      <tr><td><span class="rank-num">3</span></td><td>INV-001</td><td>Riverside Medical Centre</td><td>Physiotherapy</td><td class="td-amber">KES 285K</td><td class="td-amber">72</td><td><span class="tag mgmt">Mgmt Escalation</span></td></tr>
-      <tr><td><span class="rank-num">4</span></td><td>INV-009</td><td>Lavington Physio Clinic</td><td>Physiotherapy</td><td class="td-amber">KES 145K</td><td class="td-amber">62</td><td><span class="tag urgent">Urgent F/U</span></td></tr>
-      <tr><td><span class="rank-num">5</span></td><td>INV-006</td><td>Highridge Medical Centre</td><td>Orthopaedic</td><td class="td-amber">KES 340K</td><td class="td-amber">55</td><td><span class="tag urgent">Urgent F/U</span></td></tr>
-      <tr><td><span class="rank-num">6</span></td><td>INV-014</td><td>Highland Mission Hospital</td><td>Rehabilitation</td><td class="td-amber">KES 275K</td><td class="td-amber">48</td><td><span class="tag urgent">Urgent F/U</span></td></tr>
-      <tr><td><span class="rank-num">7</span></td><td>INV-002</td><td>Westgate Specialist Hospital</td><td>Orthopaedic</td><td class="td-amber">KES 412K</td><td class="td-amber">45</td><td><span class="tag urgent">Urgent F/U</span></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- TREND + SETTINGS -->
-<div class="section-header"><h2>TREND &amp; SETTINGS</h2><span class="section-tag">System</span></div>
-<div class="two-col">
-  <div class="panel" style="animation-delay:1.2s">
-    <h3>OVERDUE TREND</h3>
-    <div style="position:relative;height:200px"><canvas id="trendChart"></canvas></div>
-  </div>
-  <div class="panel" style="animation-delay:1.3s">
-    <h3>SYSTEM SETTINGS</h3>
-    <div class="settings-grid">
-      <div class="setting-item"><div class="setting-key">High Risk Threshold</div><div class="setting-val">45</div></div>
-      <div class="setting-item"><div class="setting-key">Watch Threshold</div><div class="setting-val">5</div></div>
-      <div class="setting-item"><div class="setting-key">30-Day Band</div><div class="setting-val">30 days</div></div>
-      <div class="setting-item"><div class="setting-key">60-Day Band</div><div class="setting-val">60 days</div></div>
-      <div class="setting-item"><div class="setting-key">90-Day Band</div><div class="setting-val">90 days</div></div>
-    </div>
-    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-      <div style="font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Alert Recipients</div>
-      <div style="font-family:var(--mono);font-size:11px;color:var(--amber)" id="rie-alert-email">finance@meridianhealthcare.co.ke</div>
-      <div style="font-family:var(--mono);font-size:11px;color:var(--amber);margin-top:4px" id="rie-alert-wa">+254 700 000 000</div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════
-     PART 2 — CASHFLOW MONITOR
-════════════════════════════════════════════════ -->
-<div class="section-divider"></div>
-
-<div class="section-header">
-  <h2>WORKING CAPITAL MONITOR</h2>
-  <span class="section-tag">13-Week Cashflow Forecast</span>
-</div>
-
-<!-- Position Banner -->
-<div class="cf-position-card">
-  <div class="cf-status-badge badge-active">
-    <div class="badge-label">Status</div>
-    <div class="badge-val">ACTIVE</div>
-  </div>
-  <div class="cf-meta">
-    <div class="cf-meta-row"><span class="cf-meta-key">Risk</span><span class="cf-meta-val amber" id="cf-banner-risk">45-day hospital payment terms create recurring W3-W6 cash trough.</span></div>
-    <div class="cf-meta-row"><span class="cf-meta-key">Trigger</span><span class="cf-meta-val">Working capital draw expected Week 4</span></div>
-    <div class="cf-meta-row"><span class="cf-meta-key">Action</span><span class="cf-meta-val green" id="cf-banner-action">Escalate overdue hospital accounts. Request advance on Chattanooga restock. Review DJO Global terms.</span></div>
-  </div>
-  <div class="cf-headline">
-    <h3 id="cf-banner-headline">KSh 3.2M timing gap created by delayed collections; KSh 10.0M facility leaves KSh 6.8M liquidity headroom.</h3>
-    <p>Facility covers trough at current assumptions, dependent on hospital collection timing improving to 30-day average.</p>
-  </div>
-  <div class="cf-outlook">
-    <div class="cf-outlook-level" id="cf-banner-status">WATCH</div>
-    <div class="cf-outlook-badge ob-watch">WATCH</div>
-    <div class="cf-outlook-meta">
-      Peak gap: <span>Week 5</span><br>
-      First positive: <span>Week 10</span><br>
-      Finance drawn: <span>KSh 2.8M</span><br>
-      Collections <span id="cf-banner-collections">72%</span> vs forecast<br>
-      Overdue exposure <span id="cf-banner-overdue">—</span><br>
-      <span id="cf-banner-priority">Use facility only if collections remain delayed after W6. Hold KSh 2M buffer and review supplier terms this month.</span>
-    </div>
-  </div>
-</div>
-
-<!-- Capital KPIs -->
-<div class="kpi-grid" style="margin-bottom:32px">
-  <div class="kpi-card"><div class="kpi-label">Monthly Revenue</div><div class="kpi-value blue" id="cf-kpi-rev">KSh 8.4M</div><div class="kpi-sub">Invoiced to hospitals &amp; clinics</div></div>
-  <div class="kpi-card"><div class="kpi-label">Monthly COGS</div><div class="kpi-value" style="color:var(--white)" id="cf-kpi-cogs">KSh 4.9M</div><div class="kpi-sub">DJO Global, Chattanooga, freight</div></div>
-  <div class="kpi-card"><div class="kpi-label">Gross Margin</div><div class="kpi-value green" id="cf-kpi-margin">42.0%</div><div class="kpi-sub">KSh 3.5M gross profit</div></div>
-  <div class="kpi-card"><div class="kpi-label">Peak Cash Timing Gap</div><div class="kpi-value danger">(KSh 3.2M)</div><div class="kpi-sub">Worst weekly cash shortfall before liquidity support</div></div>
-  <div class="kpi-card"><div class="kpi-label">Liquidity Headroom</div><div class="kpi-value amber" id="cf-kpi-headroom">KSh 6.8M</div><div class="kpi-sub">Available facility after peak cash gap</div></div>
-  <div class="kpi-card"><div class="kpi-label">Collections vs Forecast</div><div class="kpi-value amber" id="cf-kpi-collrate">72.0%</div><div class="kpi-sub">Cash received vs forecast</div></div>
-  <div class="kpi-card"><div class="kpi-label">Cashflow Status</div><div class="kpi-value amber" style="font-size:18px">WATCH</div><div class="kpi-sub">Collections delayed, margin still positive</div></div>
-</div>
-
-<!-- Management Brief CF -->
-<div class="exec-signal" style="animation-delay:0s">
-  <div class="exec-signal-item">
-    <div class="exec-label">Top Risk Driver</div>
-    <div class="exec-text" id="cf-exec-risk">45-day hospital payment terms create recurring W3-W6 cash trough.</div>
-  </div>
-  <div class="exec-signal-item">
-    <div class="exec-label">Recommended Action</div>
-    <div class="exec-text" id="cf-exec-action">Escalate overdue hospital accounts. Request advance on Chattanooga restock. Review DJO Global terms.</div>
-  </div>
-  <div class="exec-signal-item">
-    <div class="exec-label">Management Priority</div>
-    <div class="exec-text" id="cf-exec-prio">Use facility only if collections remain delayed after W6. Hold KSh 2M buffer and review supplier terms this month.</div>
-  </div>
-</div>
-
-<!-- Signals Strip -->
-<div class="signals-strip">
-  <div class="signal-card">
-    <div class="signal-title">Collections Signal</div>
-    <div class="signal-inner">
-      <div><div class="sm-label">Forecast</div><div class="sm-val blue" id="cf-sig-forecast">KSh 6.05M</div></div>
-      <div><div class="sm-label">Actual</div><div class="sm-val green" id="cf-sig-actual">KSh 4.36M</div></div>
-      <div><div class="sm-label">Shortfall</div><div class="sm-val danger" id="cf-sig-shortfall">(1.69M)</div></div>
-      <div><div class="sm-label">Rate</div><div class="sm-val amber" id="cf-sig-rate">72.0%</div></div>
-    </div>
-  </div>
-  <div class="signal-card">
-    <div class="signal-title">Risk Signal</div>
-    <div class="signal-inner">
-      <div><div class="sm-label">Active Risks</div><div class="sm-val amber">5</div></div>
-      <div><div class="sm-label">Top Score</div><div class="sm-val danger">8</div></div>
-      <div><div class="sm-label">Provision</div><div class="sm-val" style="font-size:14px;color:var(--blue)">KSh 1.8M</div></div>
-      <div><div class="sm-label">Top Risk</div><div class="sm-val danger" style="font-size:11px;margin-top:4px">Collection lag</div></div>
-    </div>
-  </div>
-  <div class="signal-card">
-    <div class="signal-title">Liquidity Cover</div>
-    <div class="signal-inner">
-      <div><div class="sm-label">WC Facility</div><div class="sm-val blue" id="cf-sig-facility">KSh 10.0M</div></div>
-      <div><div class="sm-label">Peak Gap</div><div class="sm-val danger" id="cf-sig-peak">KSh 3.2M</div></div>
-      <div><div class="sm-label">Headroom</div><div class="sm-val green" id="cf-sig-headroom">KSh 6.8M</div></div>
-      <div><div class="sm-label">Covered?</div><div class="sm-val green">YES</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- Metrics Strip -->
-<div class="metrics-strip">
-  <div class="metric-tile"><div class="mt-label">Collection Variance</div><div class="mt-val danger">Below target</div><div class="mt-sub">Actual vs forecast to date</div></div>
-  <div class="metric-tile"><div class="mt-label">Peak Gap Week</div><div class="mt-val danger">Week 5</div><div class="mt-sub">Worst cash trough</div></div>
-  <div class="metric-tile"><div class="mt-label">Max Weekly Outflow</div><div class="mt-val" style="color:var(--white)">KSh 3.6M</div><div class="mt-sub">Highest single week</div></div>
-  <div class="metric-tile"><div class="mt-label">Total Finance Drawn</div><div class="mt-val amber">KSh 2.8M</div><div class="mt-sub">KSh vs facility</div></div>
-</div>
-
-<!-- Main Chart -->
-<div class="chart-panel">
-  <h3>Weekly Inflows vs Outflows — 13-Week Working Capital Forecast</h3>
-  <div class="chart-sub">Bars show weekly cash movement · Line shows cumulative position · Red circle marks peak gap · Green triangle marks recovery</div>
-  <div style="position:relative;height:240px"><canvas id="cfMainChart"></canvas></div>
-</div>
-
-<!-- Two charts -->
-<div class="charts-equal">
-  <div class="chart-panel" style="margin-bottom:0">
-    <h3>Cash Timing Gap by Week</h3>
-    <div class="chart-sub">Negative equals cash shortfall · Peak W5 −KSh 3.2M</div>
-    <div style="position:relative;height:180px"><canvas id="cfGapChart"></canvas></div>
-  </div>
-  <div class="chart-panel" style="margin-bottom:0;padding:24px">
-    <h3>Inflow Composition by Type</h3>
-    <div class="chart-sub">Total across 13-week forecast period</div>
-    <div style="margin-top:12px">
-      <div class="inflow-row"><span class="inflow-label">Base collections (30-day)</span><div class="inflow-track"><div class="inflow-fill" style="width:52%;background:var(--green)"></div></div><span class="inflow-amt">KSh 31.4M</span></div>
-      <div class="inflow-row"><span class="inflow-label">Contracted receivables</span><div class="inflow-track"><div class="inflow-fill" style="width:36%;background:#8b5cf6"></div></div><span class="inflow-amt" style="color:#8b5cf6">KSh 21.8M</span></div>
-      <div class="inflow-row"><span class="inflow-label">Late-cycle collections</span><div class="inflow-track"><div class="inflow-fill" style="width:20%;background:var(--blue)"></div></div><span class="inflow-amt" style="color:var(--blue)">KSh 12.1M</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- Weekly Schedule -->
-<div class="cf-table-wrap" style="margin-top:24px">
-  <div class="cf-table-hdr">
-    <span class="cf-table-hdr-title">Weekly Cashflow Schedule — All 13 Weeks</span>
-    <span class="cf-table-hint">Red = peak gap · Green = first recovery</span>
-  </div>
-  <table class="cf-table">
-    <thead><tr><th style="text-align:left">Week</th><th>Inflows</th><th>Outflows</th><th>Net</th><th>Equity / Finance</th><th>Cumulative</th><th>Cash Timing Gap</th></tr></thead>
-    <tbody id="cf-tbody"></tbody>
-  </table>
-</div>
-
-<!-- Assumptions -->
-<div class="section-header" style="margin-top:32px"><h2>PROJECT ASSUMPTIONS</h2><span class="section-tag">Business Context</span></div>
-<div class="assumptions-grid">
-  <div class="assumption-card">
-    <div class="assumption-section-label">Business</div>
-    <div class="assumption-row"><span class="assumption-key">Name</span><span class="assumption-val">Meridian Healthcare Ltd</span></div>
-    <div class="assumption-row"><span class="assumption-key">Type</span><span class="assumption-val">Clinical Equipment Distributor</span></div>
-    <div class="assumption-row"><span class="assumption-key">Start</span><span class="assumption-val">Jun 2026</span></div>
-    <div class="assumption-row"><span class="assumption-key">Duration</span><span class="assumption-val">13 weeks rolling</span></div>
-    <div class="assumption-row"><span class="assumption-key">Product Lines</span><span class="assumption-val">Physio · Mobility · Ortho · Rehab</span></div>
-  </div>
-  <div class="assumption-card">
-    <div class="assumption-section-label">Revenue</div>
-    <div class="assumption-row"><span class="assumption-key">Monthly revenue</span><span class="assumption-val">KSh 8,400,000</span></div>
-    <div class="assumption-row"><span class="assumption-key">Collection rate</span><span class="assumption-val">72% in month 1</span></div>
-    <div class="assumption-row"><span class="assumption-key">Avg payment terms</span><span class="assumption-val">Net 45 days</span></div>
-    <div class="assumption-row"><span class="assumption-key">COGS %</span><span class="assumption-val">58%</span></div>
-    <div class="assumption-row"><span class="assumption-key">Units / month</span><span class="assumption-val">840 cases</span></div>
-  </div>
-  <div class="assumption-card">
-    <div class="assumption-section-label">Funding</div>
-    <div class="assumption-row"><span class="assumption-key">Equity buffer</span><span class="assumption-val">KSh 2,000,000</span></div>
-    <div class="assumption-row"><span class="assumption-key">WC facility</span><span class="assumption-val">KSh 10,000,000</span></div>
-    <div class="assumption-row"><span class="assumption-key">Interest rate</span><span class="assumption-val">1.5% per month</span></div>
-    <div class="assumption-row"><span class="assumption-key">Liquidity cover</span><span class="assumption-val">3.12x</span></div>
-    <div class="assumption-row"><span class="assumption-key">Supplier terms</span><span class="assumption-val">Global Suppliers Ltd/Elysium Ltd</span></div>
-  </div>
-</div>
-
-<!-- Cost Tracker -->
-<div class="section-header"><h2>COST TRACKER</h2><span class="section-tag">Budget vs Actual</span></div>
-<div class="ct-summary">
-  <div class="ct-sum-cell"><div class="ct-sum-label">Total Budget</div><div class="ct-sum-val" style="color:var(--white)" id="ct-budget">KSh 11.0M</div></div>
-  <div class="ct-sum-cell"><div class="ct-sum-label">Committed</div><div class="ct-sum-val blue" id="ct-committed">KSh 8.0M</div></div>
-  <div class="ct-sum-cell"><div class="ct-sum-label">Actual Spent</div><div class="ct-sum-val green" id="ct-actual">KSh 5.8M</div></div>
-  <div class="ct-sum-cell"><div class="ct-sum-label">Utilisation</div><div class="ct-sum-val green" id="ct-util">52.7%</div></div>
-  <div class="ct-sum-cell"><div class="ct-sum-label">Remaining</div><div class="ct-sum-val amber" id="ct-remaining">KSh 5.2M</div></div>
-</div>
-<div class="cf-table-wrap">
-  <table class="cf-table">
-    <thead><tr><th style="text-align:left">Category</th><th>Budget KSh</th><th>Committed</th><th>Actual Spent</th><th>Remaining</th><th>Variance %</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr><td>Equipment — Physiotherapy</td><td>3,600,000</td><td>3,600,000</td><td>2,880,000</td><td>720,000</td><td>Under 20.0%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Equipment — Mobility Aids</td><td>2,400,000</td><td>2,400,000</td><td>1,920,000</td><td>480,000</td><td>Under 20.0%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Equipment — Orthopaedic</td><td>2,800,000</td><td>2,100,000</td><td>1,540,000</td><td>1,260,000</td><td>Under 45.0%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Equipment — Rehabilitation</td><td>1,800,000</td><td>1,440,000</td><td>1,080,000</td><td>720,000</td><td>Under 40.0%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Clearing, Freight &amp; Logistics</td><td>2,880,000</td><td>2,880,000</td><td>2,160,000</td><td>720,000</td><td>Under 25.0%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Staff Salaries</td><td>7,800,000</td><td>7,800,000</td><td>3,250,000</td><td>4,550,000</td><td>Under 58.3%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Westlands Business Centre Rent (Westlands)</td><td>2,160,000</td><td>2,160,000</td><td>900,000</td><td>1,260,000</td><td>Under 58.3%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Marketing &amp; Trade Promotions</td><td>960,000</td><td>480,000</td><td>240,000</td><td>720,000</td><td>Under 75.0%</td><td><span class="tag watch">Watch</span></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  <div class="footer-brand">Most advisors leave you with a report. ProfitLens leaves you with a system.</div>
-  <div class="footer-links">
-    <a class="nav-link" href="https://linkedin.com/in/reggiegeorge" target="_blank">Reggie George · Finance Director</a>
-    <a class="nav-link" href="https://profitlensadvisory.com" target="_blank">profitlensadvisory.com</a>
-  </div>
-</div>
-
-</div><!-- /wrapper -->
-
-<script>
-// Timestamp
-const now = new Date();
-document.getElementById('updated-time').textContent = now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) + ', ' + now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-
-// Chart defaults — matches RIE exactly
-Chart.defaults.color = '#ffffff';
-Chart.defaults.font.family = "'DM Mono', monospace";
-Chart.defaults.font.size = 10;
-
-// ── Overdue Trend Chart (RIE style — amber line, same as live RIE)
-const trendCtx = document.getElementById('trendChart').getContext('2d');
-window._trendChart = new Chart(trendCtx, {
-  type:'line',
-  data:{
-    labels:['Day 1','Day 2','Day 3'],
-    datasets:[{
-      label:'Overdue',
-      data:[2100000,2450000,2700000],
-      borderColor:'#f0a500',
-      backgroundColor:'rgba(240,165,0,0.06)',
-      borderWidth:2,
-      pointBackgroundColor:'#f0a500',
-      pointRadius:5,
-      pointHoverRadius:7,
-      tension:0.4,
-      fill:true
-    }]
-  },
-  options:{
-    responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:{backgroundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1,titleFont:{family:'DM Mono',size:10},bodyFont:{family:'DM Mono',size:12},titleColor:'rgba(238,240,244,0.4)',bodyColor:'#f0a500',callbacks:{label:ctx=>'KES '+(ctx.parsed.y/1e6).toFixed(2)+'M'}}},
-    scales:{
-      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff'}},
-      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KES '+(v/1e6).toFixed(1)+'M'}}
-    }
-  }
-});
-
-// ── Cashflow data
-const weeks = ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12','W13'];
-const inflows  = [1840000,2210000,1960000,1620000,1480000,1840000,1890000,2240000,3980000,2640000,2120000,2460000,1910000];
-const outflows = [2420000,1980000,2240000,1810000,3560000,1820000,1620000,1910000,1740000,1480000,1860000,1920000,1630000];
-const nets = inflows.map((v,i)=>v-outflows[i]);
-let cum=0; const cumulatives = nets.map(v=>{cum+=v;return cum});
-const peakIdx = 4; // W5 — only one peak
-const recoveryIdx = cumulatives.findIndex((v,i)=>i>peakIdx&&v>=0);
-
-// ── Main CF Chart (cashflow-dashboard style)
-const cfMainCtx = document.getElementById('cfMainChart').getContext('2d');
-new Chart(cfMainCtx, {
-  type:'bar',
-  data:{
-    labels:weeks,
-    datasets:[
-      {label:'Inflows',data:inflows,backgroundColor:'rgba(46,204,113,0.7)',borderRadius:3,yAxisID:'y'},
-      {label:'Outflows',data:outflows.map(v=>-v),backgroundColor:outflows.map((_,i)=>i===peakIdx?'rgba(224,52,52,0.95)':'rgba(224,52,52,0.5)'),borderRadius:3,yAxisID:'y'},
-      {label:'Cumulative',data:cumulatives,type:'line',borderColor:'rgba(74,128,196,0.9)',backgroundColor:'rgba(74,128,196,0.06)',borderWidth:2,fill:true,tension:0.35,yAxisID:'y2',
-        pointRadius:cumulatives.map((_,i)=>(i===peakIdx||i===recoveryIdx)?7:2),
-        pointBackgroundColor:cumulatives.map((_,i)=>i===peakIdx?'#e03434':i===recoveryIdx?'#2ecc71':cumulatives[i]<0?'#e03434':'rgba(74,128,196,0.8)'),
-        pointBorderColor:cumulatives.map((_,i)=>(i===peakIdx||i===recoveryIdx)?'#fff':'transparent'),
-        pointBorderWidth:cumulatives.map((_,i)=>(i===peakIdx||i===recoveryIdx)?2:0)}
-    ]
-  },
-  options:{
-    responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{labels:{color:'#ffffff',font:{size:11},boxWidth:12}},
-      tooltip:{mode:'index',intersect:false,backgroundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1,callbacks:{title:items=>{const i=items[0].dataIndex;let t=weeks[i];if(i===peakIdx)t+=' ◄ PEAK GAP';if(i===recoveryIdx)t+=' ▲ FIRST POSITIVE';return t;}}}},
+.mt-label{font-family:var(--mono);font-size:9px;color:v…9775 tokens truncated…roundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1,callbacks:{title:items=>{const i=items[0].dataIndex;let t=weeks[i];if(i===peakIdx)t+=' â—„ PEAK GAP';if(i===recoveryIdx)t+=' â–² FIRST POSITIVE';return t;}}}},
     scales:{
       y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KSh '+(Math.abs(v)/1e6).toFixed(1)+'M'}},
       y2:{position:'right',grid:{display:false},ticks:{color:'#ffffff',callback:v=>'KSh '+(v/1e6).toFixed(1)+'M'}}
@@ -701,7 +232,7 @@ new Chart(cfMainCtx, {
   }
 });
 
-// ── Gap Chart
+// â”€â”€ Gap Chart
 const gapCtx = document.getElementById('cfGapChart').getContext('2d');
 const gaps = cumulatives.map(v=>Math.min(v,0));
 new Chart(gapCtx, {
@@ -715,8 +246,8 @@ new Chart(gapCtx, {
     scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff'}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KSh '+(v/1e6).toFixed(1)+'M'}}}}
 });
 
-// ── Weekly Table (built from live or static data)
-const fmt = n => n===0?'—':Math.abs(n)>=1e6?(n<0?'('+( Math.abs(n)/1e6).toFixed(2)+'M)':( n/1e6).toFixed(2)+'M'):(n<0?'('+ n.toLocaleString().replace('-','')+')':(n>0?n.toLocaleString():'—'));
+// â”€â”€ Weekly Table (built from live or static data)
+const fmt = n => n===0?'â€”':Math.abs(n)>=1e6?(n<0?'('+( Math.abs(n)/1e6).toFixed(2)+'M)':( n/1e6).toFixed(2)+'M'):(n<0?'('+ n.toLocaleString().replace('-','')+')':(n>0?n.toLocaleString():'â€”'));
 
 function buildCFTable(infl, outfl, nets, cums, peakI, recI) {
   const tbody = document.getElementById('cf-tbody');
@@ -728,24 +259,24 @@ function buildCFTable(infl, outfl, nets, cums, peakI, recI) {
     const tr = document.createElement('tr');
     if(isPeak) tr.className='peak-row';
     if(isRec) tr.className='recovery-row';
-    const peakLbl = isPeak?'<span class="peak-label">◄ PEAK GAP</span>':'';
-    const recLbl  = isRec?'<span class="rec-label">▲ RECOVERY</span>':'';
+    const peakLbl = isPeak?'<span class="peak-label">â—„ PEAK GAP</span>':'';
+    const recLbl  = isRec?'<span class="rec-label">â–² RECOVERY</span>':'';
     const gap = cums[i]<0?cums[i]:0;
     tr.innerHTML=`<td style="font-family:var(--mono)">${wk}${peakLbl}${recLbl}</td>
       <td class="pos">${infl[i].toLocaleString()}</td>
       <td class="neg">(${outfl[i].toLocaleString()})</td>
       <td class="${nets[i]<0?'neg':'pos'}">${fmt(nets[i])}</td>
-      <td>${ef>0?ef.toLocaleString():'—'}</td>
+      <td>${ef>0?ef.toLocaleString():'â€”'}</td>
       <td class="${cums[i]<0?'neg':'pos'}">${cums[i].toLocaleString()}</td>
-      <td class="${gap<0?'neg':''}">${gap<0?'('+Math.abs(gap).toLocaleString()+')':(isPeak?'('+Math.abs(Math.min(...cums)).toLocaleString()+')':'—')}</td>`;
+      <td class="${gap<0?'neg':''}">${gap<0?'('+Math.abs(gap).toLocaleString()+')':(isPeak?'('+Math.abs(Math.min(...cums)).toLocaleString()+')':'â€”')}</td>`;
     tbody.appendChild(tr);
   });
 }
 buildCFTable(inflows, outflows, nets, cumulatives, peakIdx, recoveryIdx);
 
-// ══════════════════════════════════════════════════════════
-// LIVE DATA FETCH — Google Sheets API
-// ══════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// LIVE DATA FETCH â€” Google Sheets API
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const RIE_SHEET  = '1wSGx66dWKu35RBBWDPPi17Un45F0TshYlHIJXBKXpmw';
 const CF_SHEET   = '1iMCKexIChzUtIKtwYq8LOTTbPQzWznjN8KcLnaEL6bg';
 const API_KEY    = 'AIzaSyCR0qLugXX_vcKOlfN49L3njxdShuNOPJE';
@@ -783,7 +314,7 @@ async function fetchLiveRIE() {
     getRange(RIE_SHEET, 'Control_Settings!A1:C20'),
   ]);
 
-  if (!sys.length) return; // sheet not readable — keep demo data
+  if (!sys.length) return; // sheet not readable â€” keep demo data
 
   const metric = {};
   sys.forEach(r => { if(r[0]) metric[r[0].trim()] = r[1]; });
@@ -816,7 +347,7 @@ async function fetchLiveRIE() {
   setText('rie-risk-score',  riskScore.toFixed(1));
   setText('rie-risk-level',  riskLevel);
   setText('rie-largest',     fmtKES(largest));
-  setText('rie-largest-name', [largestBuyer, largestProject].filter(Boolean).join(' · ') || 'Largest unpaid invoice');
+  setText('rie-largest-name', [largestBuyer, largestProject].filter(Boolean).join(' Â· ') || 'Largest unpaid invoice');
   setText('rie-buyer-conc',  buyerConc.toFixed(1)+'%');
   setText('rie-top-buyer-name', topBuyer ? `${topBuyer} share of outstanding` : '% of total outstanding');
   setText('rie-accts60',     accts60+'');
@@ -861,7 +392,7 @@ async function fetchLiveRIE() {
   if (proj.length > 1) {
     const pt = document.getElementById('rie-proj-table');
     if (pt) pt.innerHTML = proj.slice(1).filter(r=>r[0]).map(r=>{
-      const risk=r[5]||'—';
+      const risk=r[5]||'â€”';
       const cls = risk==='HIGH'?'high':risk==='WATCH'?'watch':'ok';
       return `<tr><td>${r[0]}</td><td>${fmtKES(parseN(r[1]))}</td><td>${parseN(r[3]).toFixed(1)}%</td>
         <td><span class="tag ${cls}">${risk}</span></td><td>${parseN(r[6]).toFixed(1)}%</td></tr>`;
@@ -987,7 +518,7 @@ async function fetchLiveCF() {
     if (dashMetric['TOP RISK DRIVER']) setText('cf-exec-risk', dashMetric['TOP RISK DRIVER']);
     if (dashMetric['RECOMMENDED ACTION']) setText('cf-exec-action', dashMetric['RECOMMENDED ACTION']);
     if (dashMetric['MANAGEMENT PRIORITY']) setText('cf-exec-prio', dashMetric['MANAGEMENT PRIORITY']);
-    if (dashMetric['CASHFLOW STATUS']) setText('cf-banner-status', String(dashMetric['CASHFLOW STATUS']).split(/[—-]/)[0].trim());
+    if (dashMetric['CASHFLOW STATUS']) setText('cf-banner-status', String(dashMetric['CASHFLOW STATUS']).split(/[â€”-]/)[0].trim());
     if (dashMetric['TOP RISK DRIVER']) setText('cf-banner-risk', dashMetric['TOP RISK DRIVER']);
     if (dashMetric['RECOMMENDED ACTION']) setText('cf-banner-action', dashMetric['RECOMMENDED ACTION']);
     if (dashMetric['MANAGEMENT PRIORITY']) setText('cf-banner-priority', dashMetric['MANAGEMENT PRIORITY']);
@@ -1021,8 +552,58 @@ async function fetchLiveCF() {
   }
 }
 
+function summaryMap(rows, labelCol, valueCol) {
+  const out = {};
+  rows.forEach(r => {
+    if (r[labelCol] !== undefined && r[valueCol] !== undefined) out[String(r[labelCol]).trim()] = r[valueCol];
+  });
+  return out;
+}
+
+async function fetchLiveOperations() {
+  const [rec, stock, purchases, actions] = await Promise.all([
+    getRange(CF_SHEET, 'Receivables!A1:N20'),
+    getRange(CF_SHEET, 'Stock!A1:N20'),
+    getRange(CF_SHEET, 'Purchases!A1:M20'),
+    getRange(CF_SHEET, 'Actions!A1:K20'),
+  ]);
+
+  if (rec.length) {
+    const m = summaryMap(rec, 12, 13);
+    setText('ops-rec-total', fmtKSh(parseN(m['Total owed'])));
+    setText('ops-rec-60', fmtKSh(parseN(m['Over 60 days'])));
+    setText('ops-rec-admin', fmtKSh(parseN(m['Admin error'])));
+  }
+  if (stock.length) {
+    const m = summaryMap(stock, 12, 13);
+    setText('ops-stock-total', fmtKSh(parseN(m['Total stock value'])));
+    setText('ops-stock-dead', fmtKSh(parseN(m['Dead (180+ days)'])));
+    setText('ops-stock-expiry', fmtKSh(parseN(m['Expiring in 90 days'])));
+  }
+  if (purchases.length) {
+    const m = summaryMap(purchases, 11, 12);
+    setText('ops-po-total', fmtKSh(parseN(m['Total ordered'])));
+    setText('ops-po-emergency', (parseRate(m['Emergency share'])*100).toFixed(1)+'%');
+    setText('ops-po-late', String(parseN(m['Shipments late'])));
+  }
+  if (actions.length) {
+    const m = summaryMap(actions, 9, 10);
+    setText('ops-actions-open', String(parseN(m['Open'])));
+    setText('ops-actions-blocked', String(parseN(m['Blocked'])));
+    setText('ops-actions-oldest', parseN(m['Oldest open, days'])+' days');
+    const tbody = document.getElementById('ops-actions-table');
+    if (tbody) {
+      tbody.innerHTML = actions.slice(5).filter(r=>r[1]).map(r=>{
+        const status = r[5] || 'Open';
+        const tag = /blocked/i.test(status) ? 'legal' : /progress/i.test(status) ? 'watch' : /closed/i.test(status) ? 'ok' : 'urgent';
+        return `<tr><td>${r[2]||'â€”'}</td><td>${r[1]}</td><td>${r[3]||'â€”'}</td><td>${r[4]||'â€”'}</td><td><span class="tag ${tag}">${status}</span></td></tr>`;
+      }).join('');
+    }
+  }
+}
+
 async function refreshAll() {
-  await Promise.all([fetchLiveRIE(), fetchLiveCF()]);
+  await Promise.all([fetchLiveRIE(), fetchLiveCF(), fetchLiveOperations()]);
   setTimeout(refreshAll, REFRESH_MS);
 }
 
@@ -1049,3 +630,4 @@ refreshAll();
 </script>
 </body>
 </html>
+
