@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Medex East Africa â€” Cash & Operations Control Tower</title>
+<title>Medex East Africa — Cash & Operations Control Tower</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23080a0d'/%3E%3Cpath d='M12 45V24h8v21zm16 0V14h8v31zm16 0V30h8v15z' fill='%23f0a500'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 .wrapper{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 32px 80px}
 
-/* â”€â”€ TOPBAR â”€â”€ */
+/* ── TOPBAR ── */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0 18px;border-bottom:1px solid var(--border);margin-bottom:32px;gap:16px;flex-wrap:wrap}
 .topbar-left{display:flex;align-items:center;gap:16px}
 .logo-mark{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;color:var(--amber);display:flex;align-items:center;gap:8px}
@@ -60,17 +60,17 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .nav-link{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:rgba(240,165,0,0.7);text-decoration:none;border:1px solid rgba(240,165,0,0.25);padding:4px 10px;transition:color 0.2s}
 .nav-link:hover{color:var(--amber)}
 
-/* â”€â”€ PROOF STRIP â”€â”€ */
+/* ── PROOF STRIP ── */
 .proof-strip{display:flex;align-items:center;flex-wrap:wrap;gap:20px;background:var(--amber-glow);border:1px solid rgba(240,165,0,0.12);padding:10px 20px;margin-bottom:40px}
 .proof-item{font-family:var(--mono);font-size:10px;color:var(--white-30);display:flex;align-items:center;gap:7px;letter-spacing:0.04em}
 .proof-item .pip{width:4px;height:4px;border-radius:50%;background:var(--amber);flex-shrink:0}
 
-/* â”€â”€ SECTION HEADERS â”€â”€ */
+/* ── SECTION HEADERS ── */
 .section-header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .section-header h2{font-family:var(--display);font-size:32px;color:var(--white);letter-spacing:0.03em;line-height:1}
 .section-tag{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.16em;text-transform:uppercase;border:1px solid rgba(240,165,0,0.25);padding:3px 9px}
 
-/* â”€â”€ KPI GRID â”€â”€ */
+/* ── KPI GRID ── */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
 .kpi-card{background:var(--black-2);padding:20px 22px;position:relative;overflow:hidden;opacity:0;transform:translateY(16px);animation:card-in 0.5s ease forwards;transition:background 0.2s}
 .kpi-card:hover{background:var(--black-3)}
@@ -86,7 +86,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .kpi-card.help-open{overflow:visible}
 .kpi-card.help-open .kpi-help-popover{display:block}
 
-/* â”€â”€ CASH SIGNAL CARD â”€â”€ */
+/* ── CASH SIGNAL CARD ── */
 .risk-badge-card{grid-column:span 2;display:flex;align-items:center;gap:20px;background:var(--black-2);padding:20px 24px}
 .risk-badge{font-family:var(--mono);font-size:12px;font-weight:500;padding:8px 18px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
 .risk-badge.DANGER{background:var(--red-dim);color:var(--red);border:1px solid rgba(224,52,52,0.3);animation:pulse-red 1.6s ease-in-out infinite}
@@ -97,7 +97,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .risk-badge-title{font-family:var(--display);font-size:18px;color:var(--white);margin-bottom:4px;letter-spacing:0.03em}
 .risk-badge-desc{font-family:var(--mono);font-size:10px;color:var(--white-30);letter-spacing:0.04em}
 
-/* â”€â”€ AGING â”€â”€ */
+/* ── AGING ── */
 .aging-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
 .aging-card{background:var(--black-2);padding:18px 20px;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards;transition:background 0.2s}
 .aging-card:hover{background:var(--black-3)}
@@ -108,20 +108,20 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .aging-bar-fill{height:100%;width:0;transition:width 1.4s cubic-bezier(0.4,0,0.2,1)}
 .aging-bar-fill.safe{background:var(--green)}.aging-bar-fill.caution{background:var(--amber)}.aging-bar-fill.risk{background:var(--red)}
 
-/* â”€â”€ EXEC SIGNAL â”€â”€ */
+/* ── EXEC SIGNAL ── */
 .exec-signal{background:var(--black-2);border:1px solid var(--border);padding:28px;margin-bottom:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards 1.0s}
 .exec-signal-item{border-left:2px solid var(--border);padding-left:20px}
 .exec-signal-item:first-child{border-left-color:var(--red)}.exec-signal-item:nth-child(2){border-left-color:var(--amber)}.exec-signal-item:nth-child(3){border-left-color:var(--blue)}
 .exec-label{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:8px}
 .exec-text{font-family:var(--heading);font-size:13px;color:var(--white-60);line-height:1.6}
 
-/* â”€â”€ TWO-COL â”€â”€ */
+/* ── TWO-COL ── */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
 .panel{background:var(--black-2);padding:24px;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards}
 .panel:nth-child(1){animation-delay:.8s}.panel:nth-child(2){animation-delay:.9s}
 .panel h3{font-family:var(--display);font-size:22px;color:var(--white);margin-bottom:18px;letter-spacing:0.03em}
 
-/* â”€â”€ TABLES â”€â”€ */
+/* ── TABLES ── */
 .rie-table{width:100%;border-collapse:collapse}
 .rie-table th{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.12em;text-transform:uppercase;padding:0 10px 10px;text-align:left;border-bottom:1px solid var(--border);font-weight:600}
 .rie-table td{font-family:var(--mono);font-size:11px;color:var(--white-60);padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle}
@@ -129,7 +129,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .rie-table tr:hover td{background:var(--amber-glow)}
 .td-danger{color:var(--red)!important}.td-amber{color:var(--amber)!important}.td-green{color:var(--green)!important}
 
-/* â”€â”€ TAGS â”€â”€ */
+/* ── TAGS ── */
 .tag{font-family:var(--mono);font-size:8px;font-weight:500;padding:3px 7px;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;display:inline-block}
 .tag.legal{background:var(--red-dim);color:var(--red);border:1px solid rgba(224,52,52,0.25)}
 .tag.urgent{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(240,165,0,0.25)}
@@ -140,18 +140,18 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .tag.ok{background:rgba(46,204,113,0.08);color:var(--green);border:1px solid rgba(46,204,113,0.2)}
 .rank-num{width:22px;height:22px;background:var(--black-3);border:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--white-30);display:inline-flex;align-items:center;justify-content:center}
 
-/* â”€â”€ FULL SECTION â”€â”€ */
+/* ── FULL SECTION ── */
 .full-section{background:var(--black-2);border:1px solid var(--border);padding:24px;margin-bottom:40px;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards}
 .full-section h3{font-family:var(--display);font-size:22px;color:var(--white);margin-bottom:18px;letter-spacing:0.03em}
 
-/* â”€â”€ SETTINGS â”€â”€ */
+/* ── SETTINGS ── */
 .settings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
 .setting-item{background:var(--black-3);padding:14px 16px;transition:background 0.2s}
 .setting-item:hover{background:var(--panel)}
 .setting-key{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
 .setting-val{font-family:var(--mono);font-size:18px;color:var(--amber)}
 
-/* â”€â”€ OPERATIONAL CONTROL TOWER â”€â”€ */
+/* ── OPERATIONAL CONTROL TOWER ── */
 .ops-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:24px}
 .ops-card{background:var(--black-2);padding:20px 22px;min-height:136px}
 .ops-card h3{font-family:var(--display);font-size:20px;letter-spacing:.04em;margin-bottom:14px}
@@ -160,12 +160,12 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .ops-row strong.risk{color:var(--red)}.ops-row strong.watch{color:var(--amber)}.ops-row strong.good{color:var(--green)}
 .ops-note{font-family:var(--mono);font-size:10px;color:var(--white-30);margin:-10px 0 24px}
 
-/* â”€â”€ DIVIDER â”€â”€ */
+/* ── DIVIDER ── */
 .section-divider{border:none;border-top:1px solid var(--border);margin:48px 0;position:relative}
 .section-divider::after{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:60px;height:1px;background:var(--amber);opacity:0.4}
 
-/* â”€â”€ CASHFLOW SECTION â”€â”€ */
-/* Inherits RIE design system exactly â€” same variables, same card style */
+/* ── CASHFLOW SECTION ── */
+/* Inherits RIE design system exactly — same variables, same card style */
 .cf-position-card{background:var(--black-2);border:1px solid var(--border);padding:28px;margin-bottom:32px;display:grid;grid-template-columns:auto 1fr auto auto;gap:24px;align-items:start}
 .cf-status-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 20px;min-width:100px;border-radius:2px}
 .badge-active{background:var(--amber-dim);border:1px solid rgba(240,165,0,0.3)}
@@ -184,7 +184,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .cf-outlook-meta{font-family:var(--mono);font-size:10px;color:var(--white-30);line-height:2}
 .cf-outlook-meta span{color:var(--white-60)}
 
-/* â”€â”€ SIGNALS STRIP â”€â”€ */
+/* ── SIGNALS STRIP ── */
 .signals-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
 .signal-card{background:var(--black-2);padding:20px 22px}
 .signal-title{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px}
@@ -193,7 +193,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .sm-val{font-family:var(--mono);font-size:16px;font-weight:500;color:var(--white);line-height:1.2}
 .sm-val.danger{color:var(--red)}.sm-val.amber{color:var(--amber)}.sm-val.green{color:var(--green)}.sm-val.blue{color:var(--blue)}
 
-/* â”€â”€ CHART PANEL â”€â”€ */
+/* ── CHART PANEL ── */
 .chart-panel{background:var(--black-2);border:1px solid var(--border);padding:24px;margin-bottom:24px}
 .chart-panel h3{font-family:var(--mono);font-size:9px;color:var(--white);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
 .chart-sub{font-family:var(--mono);font-size:10px;color:var(--white);margin-bottom:18px;font-style:italic}
@@ -205,7 +205,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .inflow-fill{height:100%}
 .inflow-amt{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green);min-width:80px;text-align:right}
 
-/* â”€â”€ CF TABLE â”€â”€ */
+/* ── CF TABLE ── */
 .cf-table-wrap{background:var(--black-2);border:1px solid var(--border);margin-bottom:32px}
 .cf-table-hdr{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border)}
 .cf-table-hdr-title{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.12em;text-transform:uppercase}
@@ -223,7 +223,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .rec-label{font-size:8px;color:var(--green);font-weight:700;letter-spacing:0.08em;margin-left:8px;text-transform:uppercase}
 .neg{color:var(--red)!important}.pos{color:var(--green)!important}
 
-/* â”€â”€ METRICS STRIP â”€â”€ */
+/* ── METRICS STRIP ── */
 .metrics-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:32px}
 .metric-tile{background:var(--black-2);padding:18px 20px}
 .mt-label{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
@@ -231,7 +231,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .mt-val.danger{color:var(--red)}.mt-val.amber{color:var(--amber)}.mt-val.green{color:var(--green)}
 .mt-sub{font-family:var(--mono);font-size:9px;color:var(--white-30)}
 
-/* â”€â”€ ASSUMPTIONS â”€â”€ */
+/* ── ASSUMPTIONS ── */
 .assumptions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:32px}
 .assumption-card{background:var(--black-2);padding:20px 22px}
 .assumption-section-label{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px}
@@ -240,7 +240,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .assumption-key{font-family:var(--heading);font-size:11px;color:var(--white-30)}
 .assumption-val{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--white-60)}
 
-/* â”€â”€ COST TRACKER â”€â”€ */
+/* ── COST TRACKER ── */
 .ct-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-bottom:none}
 .ct-sum-cell{background:var(--black-2);padding:16px 18px}
 .ct-sum-label{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
@@ -249,7 +249,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .bar-inline{display:inline-block;width:48px;height:4px;background:rgba(255,255,255,0.06);vertical-align:middle;margin-left:6px;overflow:hidden}
 .bar-inline-fill{height:100%;display:block}
 
-/* â”€â”€ OUTCOMES BLOCK â”€â”€ */
+/* ── OUTCOMES BLOCK ── */
 .outcomes-block{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
 .outcome-card{background:var(--black-2);padding:22px 24px;border-top:2px solid transparent;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards;transition:background 0.2s}
 .outcome-card:hover{background:var(--black-3)}
@@ -259,7 +259,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .outcome-desc{font-family:var(--heading);font-size:12px;color:var(--white-30);line-height:1.6}
 .outcome-desc strong{color:var(--white-60)}
 
-/* â”€â”€ FOOTER â”€â”€ */
+/* ── FOOTER ── */
 </style>
 </head>
 <body>
@@ -274,21 +274,21 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
   <div class="topbar-meta">
     <div class="meta-pill"><div class="live-dot"></div>SAMPLE DATA / CONNECTION READY</div>
-    <div class="meta-pill">UPDATED: <strong id="updated-time">â€”</strong></div>
+    <div class="meta-pill">UPDATED: <strong id="updated-time">—</strong></div>
   </div>
 </header>
 
 <!-- PROOF STRIP -->
 <div class="proof-strip">
-  <div class="proof-item"><div class="pip"></div>Sample operating data Â· structured for up to 1,000 ledger rows</div>
+  <div class="proof-item"><div class="pip"></div>Sample operating data · structured for up to 1,000 ledger rows</div>
   <div class="proof-item"><div class="pip"></div>Automated WhatsApp &amp; email alerts on breach</div>
   <div class="proof-item"><div class="pip"></div>Management summary generated every Monday morning</div>
   <div class="proof-item"><div class="pip"></div>Receivables + working capital in one system</div>
 </div>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     PART 1 â€” RECEIVABLES INTELLIGENCE ENGINE
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════════════════════════════════════
+     PART 1 — RECEIVABLES INTELLIGENCE ENGINE
+════════════════════════════════════════════════ -->
 <div class="section-header">
   <h2>PORTFOLIO OVERVIEW</h2>
   <span class="section-tag">Receivables Intelligence Engine</span>
@@ -314,7 +314,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 <!-- OUTCOMES -->
 <div class="outcomes-block">
   <div class="outcome-card"><div class="outcome-num">Day 1</div><div class="outcome-label">Instant Visibility</div><div class="outcome-desc"><strong>Flag default months before</strong> it requires a legal team.</div></div>
-  <div class="outcome-card"><div class="outcome-num">3Ã—</div><div class="outcome-label">Faster Escalation</div><div class="outcome-desc"><strong>Priority accounts ranked automatically</strong> â€” no manual triage required.</div></div>
+  <div class="outcome-card"><div class="outcome-num">3×</div><div class="outcome-label">Faster Escalation</div><div class="outcome-desc"><strong>Priority accounts ranked automatically</strong> — no manual triage required.</div></div>
   <div class="outcome-card"><div class="outcome-num">0</div><div class="outcome-label">Manual Reports</div><div class="outcome-desc"><strong>Weekly management summaries assembled</strong> and delivered without human effort.</div></div>
 </div>
 
@@ -322,8 +322,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 <div class="section-header"><h2>RECEIVABLES AGING</h2><span class="section-tag">Total Receivables Age</span></div>
 <div class="aging-grid" style="margin-bottom:40px">
   <div class="aging-card"><div class="aging-band">Current / 0-30 Days</div><div class="aging-amount" id="rie-aging-030">KES 510K</div><div class="aging-bar-track"><div class="aging-bar-fill safe" id="rie-bar-030" style="width:16%"></div></div></div>
-  <div class="aging-card"><div class="aging-band">31â€“60 Days</div><div class="aging-amount" id="rie-aging-3160">KES 1.08M</div><div class="aging-bar-track"><div class="aging-bar-fill caution" id="rie-bar-3160" style="width:33%"></div></div></div>
-  <div class="aging-card"><div class="aging-band">61â€“90 Days</div><div class="aging-amount" id="rie-aging-6190">KES 285K</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-6190" style="width:9%"></div></div></div>
+  <div class="aging-card"><div class="aging-band">31–60 Days</div><div class="aging-amount" id="rie-aging-3160">KES 1.08M</div><div class="aging-bar-track"><div class="aging-bar-fill caution" id="rie-bar-3160" style="width:33%"></div></div></div>
+  <div class="aging-card"><div class="aging-band">61–90 Days</div><div class="aging-amount" id="rie-aging-6190">KES 285K</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-6190" style="width:9%"></div></div></div>
   <div class="aging-card"><div class="aging-band">90+ Days</div><div class="aging-amount" id="rie-aging-90p">KES 840K</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-90p" style="width:26%"></div></div></div>
   <div class="aging-card"><div class="aging-band">60+ Exposure</div><div class="aging-amount" id="rie-aging-60p">KES 1.13M</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-60p" style="width:35%"></div></div></div>
   <div class="aging-card"><div class="aging-band">Accounts &gt; 60 Days</div><div class="aging-amount" id="rie-aging-accts">2 accts</div><div class="aging-bar-track"><div class="aging-bar-fill caution" id="rie-bar-accts" style="width:20%"></div></div></div>
@@ -338,7 +338,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
   <div class="exec-signal-item">
     <div class="exec-label">Recommended Action</div>
-    <div class="exec-text" id="rie-exec-action">Issue Legal Notice to Limuru Road immediately. Issue Final Demand to Parklands Orthopaedic this week. Send Urgent Follow-Up to all 31â€“60 day accounts by Friday.</div>
+    <div class="exec-text" id="rie-exec-action">Issue Legal Notice to Limuru Road immediately. Issue Final Demand to Parklands Orthopaedic this week. Send Urgent Follow-Up to all 31–60 day accounts by Friday.</div>
   </div>
   <div class="exec-signal-item">
     <div class="exec-label">Management Priority</div>
@@ -422,9 +422,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
 </div>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     PART 2 â€” CASHFLOW MONITOR
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════════════════════════════════════
+     PART 2 — CASHFLOW MONITOR
+════════════════════════════════════════════════ -->
 <div class="section-divider"></div>
 
 <div class="section-header">
@@ -455,7 +455,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       First positive: <span>Week 10</span><br>
       Finance drawn: <span>KSh 2.8M</span><br>
       Collections <span id="cf-banner-collections">72%</span> vs forecast<br>
-      Overdue exposure <span id="cf-banner-overdue">â€”</span><br>
+      Overdue exposure <span id="cf-banner-overdue">—</span><br>
       <span id="cf-banner-priority">Use facility only if collections remain delayed after W6. Hold KSh 2M buffer and review supplier terms this month.</span>
     </div>
   </div>
@@ -529,8 +529,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 <!-- Main Chart -->
 <div class="chart-panel">
-  <h3>Weekly Inflows vs Outflows â€” 13-Week Working Capital Forecast</h3>
-  <div class="chart-sub">Bars show weekly cash movement Â· Line shows cumulative position Â· Red circle marks peak gap Â· Green triangle marks recovery</div>
+  <h3>Weekly Inflows vs Outflows — 13-Week Working Capital Forecast</h3>
+  <div class="chart-sub">Bars show weekly cash movement · Line shows cumulative position · Red circle marks peak gap · Green triangle marks recovery</div>
   <div style="position:relative;height:240px"><canvas id="cfMainChart"></canvas></div>
 </div>
 
@@ -538,7 +538,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 <div class="charts-equal">
   <div class="chart-panel" style="margin-bottom:0">
     <h3>Cash Timing Gap by Week</h3>
-    <div class="chart-sub">Negative equals cash shortfall Â· Peak W5 âˆ’KSh 3.2M</div>
+    <div class="chart-sub">Negative equals cash shortfall · Peak W5 −KSh 3.2M</div>
     <div style="position:relative;height:180px"><canvas id="cfGapChart"></canvas></div>
   </div>
   <div class="chart-panel" style="margin-bottom:0;padding:24px">
@@ -555,8 +555,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 <!-- Weekly Schedule -->
 <div class="cf-table-wrap" style="margin-top:24px">
   <div class="cf-table-hdr">
-    <span class="cf-table-hdr-title">Weekly Cashflow Schedule â€” All 13 Weeks</span>
-    <span class="cf-table-hint">Red = peak gap Â· Green = first recovery</span>
+    <span class="cf-table-hdr-title">Weekly Cashflow Schedule — All 13 Weeks</span>
+    <span class="cf-table-hint">Red = peak gap · Green = first recovery</span>
   </div>
   <table class="cf-table">
     <thead><tr><th style="text-align:left">Week</th><th>Inflows</th><th>Outflows</th><th>Net</th><th>Equity / Finance</th><th>Cumulative</th><th>Cash Timing Gap</th></tr></thead>
@@ -573,7 +573,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     <div class="assumption-row"><span class="assumption-key">Type</span><span class="assumption-val">Clinical Equipment Distributor</span></div>
     <div class="assumption-row"><span class="assumption-key">Start</span><span class="assumption-val">Jun 2026</span></div>
     <div class="assumption-row"><span class="assumption-key">Duration</span><span class="assumption-val">13 weeks rolling</span></div>
-    <div class="assumption-row"><span class="assumption-key">Product Lines</span><span class="assumption-val">Physio Â· Mobility Â· Ortho Â· Rehab</span></div>
+    <div class="assumption-row"><span class="assumption-key">Product Lines</span><span class="assumption-val">Physio · Mobility · Ortho · Rehab</span></div>
   </div>
   <div class="assumption-card">
     <div class="assumption-section-label">Revenue</div>
@@ -606,10 +606,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <table class="cf-table">
     <thead><tr><th style="text-align:left">Category</th><th>Budget KSh</th><th>Committed</th><th>Actual Spent</th><th>Remaining</th><th>Variance %</th><th>Status</th></tr></thead>
     <tbody>
-      <tr><td>Equipment â€” Physiotherapy</td><td>3,600,000</td><td>3,600,000</td><td>2,880,000</td><td>720,000</td><td>Under 20.0%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Equipment â€” Mobility Aids</td><td>2,400,000</td><td>2,400,000</td><td>1,920,000</td><td>480,000</td><td>Under 20.0%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Equipment â€” Orthopaedic</td><td>2,800,000</td><td>2,100,000</td><td>1,540,000</td><td>1,260,000</td><td>Under 45.0%</td><td><span class="tag ok">On Track</span></td></tr>
-      <tr><td>Equipment â€” Rehabilitation</td><td>1,800,000</td><td>1,440,000</td><td>1,080,000</td><td>720,000</td><td>Under 40.0%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Equipment — Physiotherapy</td><td>3,600,000</td><td>3,600,000</td><td>2,880,000</td><td>720,000</td><td>Under 20.0%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Equipment — Mobility Aids</td><td>2,400,000</td><td>2,400,000</td><td>1,920,000</td><td>480,000</td><td>Under 20.0%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Equipment — Orthopaedic</td><td>2,800,000</td><td>2,100,000</td><td>1,540,000</td><td>1,260,000</td><td>Under 45.0%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Equipment — Rehabilitation</td><td>1,800,000</td><td>1,440,000</td><td>1,080,000</td><td>720,000</td><td>Under 40.0%</td><td><span class="tag ok">On Track</span></td></tr>
       <tr><td>Clearing, Freight &amp; Logistics</td><td>2,880,000</td><td>2,880,000</td><td>2,160,000</td><td>720,000</td><td>Under 25.0%</td><td><span class="tag ok">On Track</span></td></tr>
       <tr><td>Staff Salaries</td><td>7,800,000</td><td>7,800,000</td><td>3,250,000</td><td>4,550,000</td><td>Under 58.3%</td><td><span class="tag ok">On Track</span></td></tr>
       <tr><td>Westlands Business Centre Rent (Westlands)</td><td>2,160,000</td><td>2,160,000</td><td>900,000</td><td>1,260,000</td><td>Under 58.3%</td><td><span class="tag ok">On Track</span></td></tr>
@@ -635,12 +635,12 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 const now = new Date();
 document.getElementById('updated-time').textContent = now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) + ', ' + now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
 
-// Chart defaults â€” matches RIE exactly
+// Chart defaults — matches RIE exactly
 Chart.defaults.color = '#ffffff';
 Chart.defaults.font.family = "'DM Mono', monospace";
 Chart.defaults.font.size = 10;
 
-// â”€â”€ Overdue Trend Chart (RIE style â€” amber line, same as live RIE)
+// ── Overdue Trend Chart (RIE style — amber line, same as live RIE)
 const trendCtx = document.getElementById('trendChart').getContext('2d');
 window._trendChart = new Chart(trendCtx, {
   type:'line',
@@ -669,16 +669,16 @@ window._trendChart = new Chart(trendCtx, {
   }
 });
 
-// â”€â”€ Cashflow data
+// ── Cashflow data
 const weeks = ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12','W13'];
 const inflows  = [1840000,2210000,1960000,1620000,1480000,1840000,1890000,2240000,3980000,2640000,2120000,2460000,1910000];
 const outflows = [2420000,1980000,2240000,1810000,3860000,1820000,1620000,1910000,1740000,1480000,1860000,1920000,1630000];
 const nets = inflows.map((v,i)=>v-outflows[i]);
 let cum=0; const cumulatives = nets.map(v=>{cum+=v;return cum});
-const peakIdx = 4; // W5 â€” only one peak
+const peakIdx = 4; // W5 — only one peak
 const recoveryIdx = cumulatives.findIndex((v,i)=>i>peakIdx&&v>=0);
 
-// â”€â”€ Main CF Chart (cashflow-dashboard style)
+// ── Main CF Chart (cashflow-dashboard style)
 const cfMainCtx = document.getElementById('cfMainChart').getContext('2d');
 new Chart(cfMainCtx, {
   type:'bar',
@@ -697,7 +697,7 @@ new Chart(cfMainCtx, {
   options:{
     responsive:true,maintainAspectRatio:false,
     plugins:{legend:{labels:{color:'#ffffff',font:{size:11},boxWidth:12}},
-      tooltip:{mode:'index',intersect:false,backgroundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1,callbacks:{title:items=>{const i=items[0].dataIndex;let t=weeks[i];if(i===peakIdx)t+=' â—„ PEAK GAP';if(i===recoveryIdx)t+=' â–² FIRST POSITIVE';return t;}}}},
+      tooltip:{mode:'index',intersect:false,backgroundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1,callbacks:{title:items=>{const i=items[0].dataIndex;let t=weeks[i];if(i===peakIdx)t+=' ◄ PEAK GAP';if(i===recoveryIdx)t+=' ▲ FIRST POSITIVE';return t;}}}},
     scales:{
       y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KSh '+(Math.abs(v)/1e6).toFixed(1)+'M'}},
       y2:{position:'right',grid:{display:false},ticks:{color:'#ffffff',callback:v=>'KSh '+(v/1e6).toFixed(1)+'M'}}
@@ -705,7 +705,7 @@ new Chart(cfMainCtx, {
   }
 });
 
-// â”€â”€ Gap Chart
+// ── Gap Chart
 const gapCtx = document.getElementById('cfGapChart').getContext('2d');
 const gaps = cumulatives.map(v=>Math.min(v,0));
 new Chart(gapCtx, {
@@ -719,8 +719,8 @@ new Chart(gapCtx, {
     scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff'}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KSh '+(v/1e6).toFixed(1)+'M'}}}}
 });
 
-// â”€â”€ Weekly Table (built from live or static data)
-const fmt = n => n===0?'â€”':Math.abs(n)>=1e6?(n<0?'('+( Math.abs(n)/1e6).toFixed(2)+'M)':( n/1e6).toFixed(2)+'M'):(n<0?'('+ n.toLocaleString().replace('-','')+')':(n>0?n.toLocaleString():'â€”'));
+// ── Weekly Table (built from live or static data)
+const fmt = n => n===0?'—':Math.abs(n)>=1e6?(n<0?'('+( Math.abs(n)/1e6).toFixed(2)+'M)':( n/1e6).toFixed(2)+'M'):(n<0?'('+ n.toLocaleString().replace('-','')+')':(n>0?n.toLocaleString():'—'));
 
 function buildCFTable(infl, outfl, nets, cums, peakI, recI) {
   const tbody = document.getElementById('cf-tbody');
@@ -732,24 +732,24 @@ function buildCFTable(infl, outfl, nets, cums, peakI, recI) {
     const tr = document.createElement('tr');
     if(isPeak) tr.className='peak-row';
     if(isRec) tr.className='recovery-row';
-    const peakLbl = isPeak?'<span class="peak-label">â—„ PEAK GAP</span>':'';
-    const recLbl  = isRec?'<span class="rec-label">â–² RECOVERY</span>':'';
+    const peakLbl = isPeak?'<span class="peak-label">◄ PEAK GAP</span>':'';
+    const recLbl  = isRec?'<span class="rec-label">▲ RECOVERY</span>':'';
     const gap = cums[i]<0?cums[i]:0;
     tr.innerHTML=`<td style="font-family:var(--mono)">${wk}${peakLbl}${recLbl}</td>
       <td class="pos">${infl[i].toLocaleString()}</td>
       <td class="neg">(${outfl[i].toLocaleString()})</td>
       <td class="${nets[i]<0?'neg':'pos'}">${fmt(nets[i])}</td>
-      <td>${ef>0?ef.toLocaleString():'â€”'}</td>
+      <td>${ef>0?ef.toLocaleString():'—'}</td>
       <td class="${cums[i]<0?'neg':'pos'}">${cums[i].toLocaleString()}</td>
-      <td class="${gap<0?'neg':''}">${gap<0?'('+Math.abs(gap).toLocaleString()+')':(isPeak?'('+Math.abs(Math.min(...cums)).toLocaleString()+')':'â€”')}</td>`;
+      <td class="${gap<0?'neg':''}">${gap<0?'('+Math.abs(gap).toLocaleString()+')':(isPeak?'('+Math.abs(Math.min(...cums)).toLocaleString()+')':'—')}</td>`;
     tbody.appendChild(tr);
   });
 }
 buildCFTable(inflows, outflows, nets, cumulatives, peakIdx, recoveryIdx);
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// LIVE DATA FETCH â€” Google Sheets API
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ══════════════════════════════════════════════════════════
+// LIVE DATA FETCH — Google Sheets API
+// ══════════════════════════════════════════════════════════
 const RIE_SHEET  = '1wSGx66dWKu35RBBWDPPi17Un45F0TshYlHIJXBKXpmw';
 const CF_SHEET   = '1iMCKexIChzUtIKtwYq8LOTTbPQzWznjN8KcLnaEL6bg';
 const API_KEY    = 'AIzaSyCR0qLugXX_vcKOlfN49L3njxdShuNOPJE';
@@ -800,7 +800,7 @@ async function fetchLiveRIE() {
     getRange(RIE_SHEET, 'Control_Settings!A1:C20'),
   ]);
 
-  if (!sys.length) return; // sheet not readable â€” keep demo data
+  if (!sys.length) return; // sheet not readable — keep demo data
 
   const metric = {};
   sys.forEach(r => { if(r[0]) metric[r[0].trim()] = r[1]; });
@@ -833,7 +833,7 @@ async function fetchLiveRIE() {
   setText('rie-risk-score',  riskScore.toFixed(1));
   setText('rie-risk-level',  riskLevel);
   setText('rie-largest',     fmtKES(largest));
-  setText('rie-largest-name', [largestBuyer, largestProject].filter(Boolean).join(' Â· ') || 'Largest unpaid invoice');
+  setText('rie-largest-name', [largestBuyer, largestProject].filter(Boolean).join(' · ') || 'Largest unpaid invoice');
   setText('rie-buyer-conc',  buyerConc.toFixed(1)+'%');
   setText('rie-top-buyer-name', topBuyer ? `${topBuyer} share of outstanding` : '% of total outstanding');
   setText('rie-accts60',     accts60+'');
@@ -878,7 +878,7 @@ async function fetchLiveRIE() {
   if (proj.length > 1) {
     const pt = document.getElementById('rie-proj-table');
     if (pt) pt.innerHTML = proj.slice(1).filter(r=>r[0]).map(r=>{
-      const risk=r[5]||'â€”';
+      const risk=r[5]||'—';
       const cls = risk==='HIGH'?'high':risk==='WATCH'?'watch':'ok';
       return `<tr><td>${r[0]}</td><td>${fmtKES(parseN(r[1]))}</td><td>${parseN(r[3]).toFixed(1)}%</td>
         <td><span class="tag ${cls}">${risk}</span></td><td>${parseN(r[6]).toFixed(1)}%</td></tr>`;
@@ -1004,7 +1004,7 @@ async function fetchLiveCF() {
     if (dashMetric['TOP RISK DRIVER']) setText('cf-exec-risk', dashMetric['TOP RISK DRIVER']);
     if (dashMetric['RECOMMENDED ACTION']) setText('cf-exec-action', dashMetric['RECOMMENDED ACTION']);
     if (dashMetric['MANAGEMENT PRIORITY']) setText('cf-exec-prio', dashMetric['MANAGEMENT PRIORITY']);
-    if (dashMetric['CASHFLOW STATUS']) setText('cf-banner-status', String(dashMetric['CASHFLOW STATUS']).split(/[â€”-]/)[0].trim());
+    if (dashMetric['CASHFLOW STATUS']) setText('cf-banner-status', String(dashMetric['CASHFLOW STATUS']).split(/[—-]/)[0].trim());
     if (dashMetric['TOP RISK DRIVER']) setText('cf-banner-risk', dashMetric['TOP RISK DRIVER']);
     if (dashMetric['RECOMMENDED ACTION']) setText('cf-banner-action', dashMetric['RECOMMENDED ACTION']);
     if (dashMetric['MANAGEMENT PRIORITY']) setText('cf-banner-priority', dashMetric['MANAGEMENT PRIORITY']);
@@ -1084,7 +1084,7 @@ async function fetchLiveOperations() {
       tbody.innerHTML = actions.slice(5).filter(r=>r[1]).map(r=>{
         const status = r[5] || 'Open';
         const tag = /blocked/i.test(status) ? 'legal' : /progress/i.test(status) ? 'watch' : /closed/i.test(status) ? 'ok' : 'urgent';
-        return `<tr><td>${r[2]||'â€”'}</td><td>${r[1]}</td><td>${r[3]||'â€”'}</td><td>${r[4]||'â€”'}</td><td><span class="tag ${tag}">${status}</span></td></tr>`;
+        return `<tr><td>${r[2]||'—'}</td><td>${r[1]}</td><td>${r[3]||'—'}</td><td>${r[4]||'—'}</td><td><span class="tag ${tag}">${status}</span></td></tr>`;
       }).join('');
     }
   }
