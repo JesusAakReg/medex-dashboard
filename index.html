@@ -220,7 +220,498 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .peak-row td{background:rgba(224,52,52,0.06)!important;border-top:1px solid rgba(224,52,52,0.2);border-bottom:1px solid rgba(224,52,52,0.2)}
 .recovery-row td{background:rgba(46,204,113,0.05)!important;border-top:1px solid rgba(46,204,113,0.15);border-bottom:1px solid rgba(46,204,113,0.15)}
 .peak-label{font-size:8px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-left:8px;text-transform:uppercase}
-.rec-label{font-size:8px;color:var(--green);font-weight:700;letter-spacing:0.08em;margin-left:8px;…113925 tokens truncated…,data:gaps,
+.rec-label{font-size:8px;color:var(--green);font-weight:700;letter-spacing:0.08em;margin-left:8px;text-transform:uppercase}
+.neg{color:var(--red)!important}.pos{color:var(--green)!important}
+
+/* â”€â”€ METRICS STRIP â”€â”€ */
+.metrics-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:32px}
+.metric-tile{background:var(--black-2);padding:18px 20px}
+.mt-label{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+.mt-val{font-family:var(--mono);font-size:22px;font-weight:500;line-height:1;margin-bottom:4px}
+.mt-val.danger{color:var(--red)}.mt-val.amber{color:var(--amber)}.mt-val.green{color:var(--green)}
+.mt-sub{font-family:var(--mono);font-size:9px;color:var(--white-30)}
+
+/* â”€â”€ ASSUMPTIONS â”€â”€ */
+.assumptions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:32px}
+.assumption-card{background:var(--black-2);padding:20px 22px}
+.assumption-section-label{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px}
+.assumption-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border)}
+.assumption-row:last-child{border-bottom:none}
+.assumption-key{font-family:var(--heading);font-size:11px;color:var(--white-30)}
+.assumption-val{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--white-60)}
+
+/* â”€â”€ COST TRACKER â”€â”€ */
+.ct-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-bottom:none}
+.ct-sum-cell{background:var(--black-2);padding:16px 18px}
+.ct-sum-label{font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+.ct-sum-val{font-family:var(--mono);font-size:20px;font-weight:500}
+.cf-table td.bar-cell{position:relative}
+.bar-inline{display:inline-block;width:48px;height:4px;background:rgba(255,255,255,0.06);vertical-align:middle;margin-left:6px;overflow:hidden}
+.bar-inline-fill{height:100%;display:block}
+
+/* â”€â”€ OUTCOMES BLOCK â”€â”€ */
+.outcomes-block{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
+.outcome-card{background:var(--black-2);padding:22px 24px;border-top:2px solid transparent;opacity:0;transform:translateY(12px);animation:card-in 0.5s ease forwards;transition:background 0.2s}
+.outcome-card:hover{background:var(--black-3)}
+.outcome-card:nth-child(1){animation-delay:.1s;border-top-color:var(--red)}.outcome-card:nth-child(2){animation-delay:.2s;border-top-color:var(--amber)}.outcome-card:nth-child(3){animation-delay:.3s;border-top-color:var(--blue)}
+.outcome-num{font-family:var(--display);font-size:48px;color:var(--white);line-height:1;margin-bottom:4px}
+.outcome-label{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:8px}
+.outcome-desc{font-family:var(--heading);font-size:12px;color:var(--white-30);line-height:1.6}
+.outcome-desc strong{color:var(--white-60)}
+
+/* â”€â”€ FOOTER â”€â”€ */
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <img class="medex-header-logo" src="data:image/webp;base64,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" alt="Medex East Africa Ltd">
+    <span style="width:1px;height:18px;background:rgba(240,165,0,0.3);display:inline-block"></span>MEDEX EAST AFRICA <span style="font-size:9px;color:rgba(240,165,0,0.4);letter-spacing:0.1em">// FY2026</span></div>
+    <div class="brand">CASH &amp; <span class="amber">OPERATIONS</span></div>
+  </div>
+  <div class="topbar-meta">
+    <div class="meta-pill"><div class="live-dot"></div>SAMPLE DATA / CONNECTION READY</div>
+    <div class="meta-pill">UPDATED: <strong id="updated-time">â€”</strong></div>
+  </div>
+</header>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item"><div class="pip"></div>Sample operating data Â· structured for up to 1,000 ledger rows</div>
+  <div class="proof-item"><div class="pip"></div>Automated WhatsApp &amp; email alerts on breach</div>
+  <div class="proof-item"><div class="pip"></div>Management summary generated every Monday morning</div>
+  <div class="proof-item"><div class="pip"></div>Receivables + working capital in one system</div>
+</div>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     PART 1 â€” RECEIVABLES INTELLIGENCE ENGINE
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<div class="section-header">
+  <h2>PORTFOLIO OVERVIEW</h2>
+  <span class="section-tag">Receivables Intelligence Engine</span>
+</div>
+
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="kpi-label">Total Outstanding</div><div class="kpi-value blue" id="rie-outstanding">KES 3.23M</div><div class="kpi-sub">Gross receivables</div></div>
+  <div class="kpi-card"><div class="kpi-label">Overdue 31+ Days</div><div class="kpi-value danger" id="rie-overdue">KES 2.70M</div><div class="kpi-sub">Excludes 0-30 day receivables</div></div>
+  <div class="kpi-card"><div class="kpi-label">Overdue %</div><div class="kpi-value amber" id="rie-od-pct">83.6%</div><div class="kpi-sub">31+ days / outstanding</div></div>
+  <div class="kpi-card"><button class="kpi-help" type="button" aria-label="Explain portfolio risk score">?</button><div class="kpi-help-popover">Portfolio Risk Score = overdue percentage + aging severity + concentration penalty. Aging severity adds 2.5 points for each account over 60 days, capped at 15 points. Concentration adds 5 points only if the largest buyer is more than 40% of total outstanding.</div><div class="kpi-label">Portfolio Risk Score</div><div class="kpi-value danger" id="rie-risk-score">58.4</div><div class="kpi-sub" id="rie-risk-level">HIGH</div></div>
+  <div class="kpi-card risk-badge-card">
+    <div class="risk-badge PRESSURE" id="rie-signal-badge">PRESSURE</div>
+    <div class="risk-badge-info">
+      <div class="risk-badge-title">CASH RISK SIGNAL</div>
+      <div class="risk-badge-desc">Collection lag increasing overdue exposure across hospital portfolio</div>
+    </div>
+  </div>
+  <div class="kpi-card"><div class="kpi-label">Largest Single Exposure</div><div class="kpi-value amber" id="rie-largest">KES 620K</div><div class="kpi-sub" id="rie-largest-name">Largest unpaid invoice</div></div>
+  <div class="kpi-card"><button class="kpi-help" type="button" aria-label="Explain top buyer concentration">?</button><div class="kpi-help-popover">Top Buyer Concentration shows how much of total unpaid receivables sits with the single largest buyer. Formula: largest buyer outstanding balance divided by total outstanding receivables.</div><div class="kpi-label">Top Buyer Concentration</div><div class="kpi-value amber" id="rie-buyer-conc">19.2%</div><div class="kpi-sub" id="rie-top-buyer-name">% of total outstanding</div></div>
+  <div class="kpi-card"><div class="kpi-label">High Risk Accounts</div><div class="kpi-value danger" id="rie-accts60">2</div><div class="kpi-sub">Escalation required</div></div>
+</div>
+
+<!-- OUTCOMES -->
+<div class="outcomes-block">
+  <div class="outcome-card"><div class="outcome-num">Day 1</div><div class="outcome-label">Instant Visibility</div><div class="outcome-desc"><strong>Flag default months before</strong> it requires a legal team.</div></div>
+  <div class="outcome-card"><div class="outcome-num">3Ã—</div><div class="outcome-label">Faster Escalation</div><div class="outcome-desc"><strong>Priority accounts ranked automatically</strong> â€” no manual triage required.</div></div>
+  <div class="outcome-card"><div class="outcome-num">0</div><div class="outcome-label">Manual Reports</div><div class="outcome-desc"><strong>Weekly management summaries assembled</strong> and delivered without human effort.</div></div>
+</div>
+
+<!-- AGING -->
+<div class="section-header"><h2>RECEIVABLES AGING</h2><span class="section-tag">Total Receivables Age</span></div>
+<div class="aging-grid" style="margin-bottom:40px">
+  <div class="aging-card"><div class="aging-band">Current / 0-30 Days</div><div class="aging-amount" id="rie-aging-030">KES 510K</div><div class="aging-bar-track"><div class="aging-bar-fill safe" id="rie-bar-030" style="width:16%"></div></div></div>
+  <div class="aging-card"><div class="aging-band">31â€“60 Days</div><div class="aging-amount" id="rie-aging-3160">KES 1.08M</div><div class="aging-bar-track"><div class="aging-bar-fill caution" id="rie-bar-3160" style="width:33%"></div></div></div>
+  <div class="aging-card"><div class="aging-band">61â€“90 Days</div><div class="aging-amount" id="rie-aging-6190">KES 285K</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-6190" style="width:9%"></div></div></div>
+  <div class="aging-card"><div class="aging-band">90+ Days</div><div class="aging-amount" id="rie-aging-90p">KES 840K</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-90p" style="width:26%"></div></div></div>
+  <div class="aging-card"><div class="aging-band">60+ Exposure</div><div class="aging-amount" id="rie-aging-60p">KES 1.13M</div><div class="aging-bar-track"><div class="aging-bar-fill risk" id="rie-bar-60p" style="width:35%"></div></div></div>
+  <div class="aging-card"><div class="aging-band">Accounts &gt; 60 Days</div><div class="aging-amount" id="rie-aging-accts">2 accts</div><div class="aging-bar-track"><div class="aging-bar-fill caution" id="rie-bar-accts" style="width:20%"></div></div></div>
+</div>
+
+<!-- MANAGEMENT BRIEF -->
+<div class="section-header"><h2>MANAGEMENT BRIEF</h2><span class="section-tag">Monday Signal</span></div>
+<div class="exec-signal">
+  <div class="exec-signal-item">
+    <div class="exec-label">Top Risk Driver</div>
+    <div class="exec-text" id="rie-exec-risk">Parklands Orthopaedic Hospital (91 days) and Riverside Road Specialist Clinic (105 days) are in Legal / Default Review territory. Combined exposure KES 840K at critical risk.</div>
+  </div>
+  <div class="exec-signal-item">
+    <div class="exec-label">Recommended Action</div>
+    <div class="exec-text" id="rie-exec-action">Issue Legal Notice to Limuru Road immediately. Issue Final Demand to Parklands Orthopaedic this week. Send Urgent Follow-Up to all 31â€“60 day accounts by Friday.</div>
+  </div>
+  <div class="exec-signal-item">
+    <div class="exec-label">Management Priority</div>
+    <div class="exec-text" id="rie-exec-prio">Clear the 90+ book before month end. Prioritise the largest aged accounts for management calls.</div>
+  </div>
+</div>
+
+<!-- BUYER + PROJECT EXPOSURE -->
+<div class="section-header"><h2>EXPOSURE DETAIL</h2><span class="section-tag">Customer &amp; Product Line</span></div>
+<div class="two-col">
+  <div class="panel">
+    <h3>CUSTOMER EXPOSURE</h3>
+    <table class="rie-table">
+      <thead><tr><th>Customer</th><th>Outstanding</th><th>Overdue</th><th>OD %</th></tr></thead>
+      <tbody id="rie-buyer-table">
+        <tr><td>Parklands Orthopaedic Hospital</td><td>KES 620K</td><td class="td-danger">KES 620K</td><td class="td-danger">100.0%</td></tr>
+        <tr><td>City Physio & Rehab</td><td>KES 510K</td><td class="td-danger">KES 510K</td><td class="td-danger">100.0%</td></tr>
+        <tr><td>Westgate Specialist Hospital</td><td>KES 412K</td><td class="td-danger">KES 412K</td><td class="td-danger">100.0%</td></tr>
+        <tr><td>Brightfield Children's Hospital</td><td>KES 390K</td><td class="td-danger">KES 390K</td><td class="td-danger">100.0%</td></tr>
+        <tr><td>Highridge Medical Centre</td><td>KES 340K</td><td class="td-danger">KES 340K</td><td class="td-danger">100.0%</td></tr>
+        <tr><td>ProMotion Rehab Centre</td><td>KES 310K</td><td>KES 0</td><td class="td-green">0.0%</td></tr>
+        <tr><td>Riverside Medical Centre</td><td>KES 285K</td><td class="td-danger">KES 285K</td><td class="td-danger">100.0%</td></tr>
+        <tr><td>Highland Mission Hospital</td><td>KES 275K</td><td class="td-danger">KES 275K</td><td class="td-danger">100.0%</td></tr>
+        <tr><td>Riverside Road Specialist Clinic</td><td>KES 220K</td><td class="td-danger">KES 220K</td><td class="td-danger">100.0%</td></tr>
+        <tr><td>Lavington Physio Clinic</td><td>KES 145K</td><td class="td-danger">KES 145K</td><td class="td-danger">100.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel">
+    <h3>PRODUCT LINE RISK SUMMARY</h3>
+    <table class="rie-table">
+      <thead><tr><th>Product Line</th><th>Outstanding</th><th>OD %</th><th>Risk</th><th>Share</th></tr></thead>
+      <tbody id="rie-proj-table">
+        <tr><td>Orthopaedic</td><td>KES 1.36M</td><td class="td-danger">100.0%</td><td><span class="tag high">HIGH</span></td><td class="td-amber">42.2%</td></tr>
+        <tr><td>Physiotherapy</td><td>KES 1.12M</td><td class="td-danger">100.0%</td><td><span class="tag high">HIGH</span></td><td class="td-amber">34.7%</td></tr>
+        <tr><td>Mobility Aids</td><td>KES 1.02M</td><td>31.5%</td><td><span class="tag watch">WATCH</span></td><td>31.5%</td></tr>
+        <tr><td>Rehabilitation</td><td>KES 562K</td><td class="td-danger">100.0%</td><td><span class="tag watch">WATCH</span></td><td>17.4%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PRIORITY ACCOUNTS -->
+<div class="full-section" style="animation-delay:1.1s">
+  <h3>PRIORITY ESCALATION ACCOUNTS</h3>
+  <table class="rie-table">
+    <thead><tr><th>Rank</th><th>Ref</th><th>Customer</th><th>Product Line</th><th>Amount</th><th>Days OD</th><th>Action</th></tr></thead>
+    <tbody id="rie-prio-table">
+      <tr><td><span class="rank-num">1</span></td><td>INV-011</td><td>Riverside Road Specialist Clinic</td><td>Orthopaedic</td><td class="td-danger">KES 220K</td><td class="td-danger">105</td><td><span class="tag legal">Legal Notice</span></td></tr>
+      <tr><td><span class="rank-num">2</span></td><td>INV-004</td><td>Parklands Orthopaedic Hospital</td><td>Mobility Aids</td><td class="td-danger">KES 620K</td><td class="td-danger">91</td><td><span class="tag legal">Legal Notice</span></td></tr>
+      <tr><td><span class="rank-num">3</span></td><td>INV-001</td><td>Riverside Medical Centre</td><td>Physiotherapy</td><td class="td-amber">KES 285K</td><td class="td-amber">72</td><td><span class="tag mgmt">Mgmt Escalation</span></td></tr>
+      <tr><td><span class="rank-num">4</span></td><td>INV-009</td><td>Lavington Physio Clinic</td><td>Physiotherapy</td><td class="td-amber">KES 145K</td><td class="td-amber">62</td><td><span class="tag urgent">Urgent F/U</span></td></tr>
+      <tr><td><span class="rank-num">5</span></td><td>INV-006</td><td>Highridge Medical Centre</td><td>Orthopaedic</td><td class="td-amber">KES 340K</td><td class="td-amber">55</td><td><span class="tag urgent">Urgent F/U</span></td></tr>
+      <tr><td><span class="rank-num">6</span></td><td>INV-014</td><td>Highland Mission Hospital</td><td>Rehabilitation</td><td class="td-amber">KES 275K</td><td class="td-amber">48</td><td><span class="tag urgent">Urgent F/U</span></td></tr>
+      <tr><td><span class="rank-num">7</span></td><td>INV-002</td><td>Westgate Specialist Hospital</td><td>Orthopaedic</td><td class="td-amber">KES 412K</td><td class="td-amber">45</td><td><span class="tag urgent">Urgent F/U</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TREND + SETTINGS -->
+<div class="section-header"><h2>TREND &amp; SETTINGS</h2><span class="section-tag">System</span></div>
+<div class="two-col">
+  <div class="panel" style="animation-delay:1.2s">
+    <h3>OVERDUE TREND</h3>
+    <div style="position:relative;height:200px"><canvas id="trendChart"></canvas></div>
+  </div>
+  <div class="panel" style="animation-delay:1.3s">
+    <h3>SYSTEM SETTINGS</h3>
+    <div class="settings-grid">
+      <div class="setting-item"><div class="setting-key">High Risk Threshold</div><div class="setting-val">45</div></div>
+      <div class="setting-item"><div class="setting-key">Watch Threshold</div><div class="setting-val">5</div></div>
+      <div class="setting-item"><div class="setting-key">30-Day Band</div><div class="setting-val">30 days</div></div>
+      <div class="setting-item"><div class="setting-key">60-Day Band</div><div class="setting-val">60 days</div></div>
+      <div class="setting-item"><div class="setting-key">90-Day Band</div><div class="setting-val">90 days</div></div>
+    </div>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--white-30);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Alert Recipients</div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--amber)" id="rie-alert-email">Management email configured</div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--amber);margin-top:4px" id="rie-alert-wa">WhatsApp recipient configured</div>
+    </div>
+  </div>
+</div>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     PART 2 â€” CASHFLOW MONITOR
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<div class="section-divider"></div>
+
+<div class="section-header">
+  <h2>WORKING CAPITAL MONITOR</h2>
+  <span class="section-tag">13-Week Cashflow Forecast</span>
+</div>
+
+<!-- Position Banner -->
+<div class="cf-position-card">
+  <div class="cf-status-badge badge-active">
+    <div class="badge-label">Status</div>
+    <div class="badge-val">ACTIVE</div>
+  </div>
+  <div class="cf-meta">
+    <div class="cf-meta-row"><span class="cf-meta-key">Risk</span><span class="cf-meta-val amber" id="cf-banner-risk">45-day hospital payment terms create recurring W3-W6 cash trough.</span></div>
+    <div class="cf-meta-row"><span class="cf-meta-key">Trigger</span><span class="cf-meta-val">Working capital draw expected Week 4</span></div>
+    <div class="cf-meta-row"><span class="cf-meta-key">Action</span><span class="cf-meta-val green" id="cf-banner-action">Escalate overdue hospital accounts. Request advance on Chattanooga restock. Review DJO Global terms.</span></div>
+  </div>
+  <div class="cf-headline">
+    <h3 id="cf-banner-headline">KSh 3.2M timing gap created by delayed collections; KSh 10.0M facility leaves KSh 6.8M liquidity headroom.</h3>
+    <p>Facility covers trough at current assumptions, dependent on hospital collection timing improving to 30-day average.</p>
+  </div>
+  <div class="cf-outlook">
+    <div class="cf-outlook-level" id="cf-banner-status">WATCH</div>
+    <div class="cf-outlook-badge ob-watch">WATCH</div>
+    <div class="cf-outlook-meta">
+      Peak gap: <span>Week 5</span><br>
+      First positive: <span>Week 10</span><br>
+      Finance drawn: <span>KSh 2.8M</span><br>
+      Collections <span id="cf-banner-collections">72%</span> vs forecast<br>
+      Overdue exposure <span id="cf-banner-overdue">â€”</span><br>
+      <span id="cf-banner-priority">Use facility only if collections remain delayed after W6. Hold KSh 2M buffer and review supplier terms this month.</span>
+    </div>
+  </div>
+</div>
+
+<!-- Capital KPIs -->
+<div class="kpi-grid" style="margin-bottom:32px">
+  <div class="kpi-card"><div class="kpi-label">Monthly Revenue</div><div class="kpi-value blue" id="cf-kpi-rev">KSh 8.4M</div><div class="kpi-sub">Invoiced to hospitals &amp; clinics</div></div>
+  <div class="kpi-card"><div class="kpi-label">Monthly COGS</div><div class="kpi-value" style="color:var(--white)" id="cf-kpi-cogs">KSh 4.9M</div><div class="kpi-sub">DJO Global, Chattanooga, freight</div></div>
+  <div class="kpi-card"><div class="kpi-label">Gross Margin</div><div class="kpi-value green" id="cf-kpi-margin">42.0%</div><div class="kpi-sub">KSh 3.5M gross profit</div></div>
+  <div class="kpi-card"><div class="kpi-label">Peak Cash Timing Gap</div><div class="kpi-value danger">(KSh 3.2M)</div><div class="kpi-sub">Worst weekly cash shortfall before liquidity support</div></div>
+  <div class="kpi-card"><div class="kpi-label">Liquidity Headroom</div><div class="kpi-value amber" id="cf-kpi-headroom">KSh 6.8M</div><div class="kpi-sub">Available facility after peak cash gap</div></div>
+  <div class="kpi-card"><div class="kpi-label">Collections vs Forecast</div><div class="kpi-value amber" id="cf-kpi-collrate">72.0%</div><div class="kpi-sub">Cash received vs forecast</div></div>
+  <div class="kpi-card"><div class="kpi-label">Cashflow Status</div><div class="kpi-value amber" style="font-size:18px">WATCH</div><div class="kpi-sub">Collections delayed, margin still positive</div></div>
+</div>
+
+<!-- Management Brief CF -->
+<div class="exec-signal" style="animation-delay:0s">
+  <div class="exec-signal-item">
+    <div class="exec-label">Top Risk Driver</div>
+    <div class="exec-text" id="cf-exec-risk">45-day hospital payment terms create recurring W3-W6 cash trough.</div>
+  </div>
+  <div class="exec-signal-item">
+    <div class="exec-label">Recommended Action</div>
+    <div class="exec-text" id="cf-exec-action">Escalate overdue hospital accounts. Request advance on Chattanooga restock. Review DJO Global terms.</div>
+  </div>
+  <div class="exec-signal-item">
+    <div class="exec-label">Management Priority</div>
+    <div class="exec-text" id="cf-exec-prio">Use facility only if collections remain delayed after W6. Hold KSh 2M buffer and review supplier terms this month.</div>
+  </div>
+</div>
+
+<!-- Signals Strip -->
+<div class="signals-strip">
+  <div class="signal-card">
+    <div class="signal-title">Collections Signal</div>
+    <div class="signal-inner">
+      <div><div class="sm-label">Forecast</div><div class="sm-val blue" id="cf-sig-forecast">KSh 6.05M</div></div>
+      <div><div class="sm-label">Actual</div><div class="sm-val green" id="cf-sig-actual">KSh 4.36M</div></div>
+      <div><div class="sm-label">Shortfall</div><div class="sm-val danger" id="cf-sig-shortfall">(1.69M)</div></div>
+      <div><div class="sm-label">Rate</div><div class="sm-val amber" id="cf-sig-rate">72.0%</div></div>
+    </div>
+  </div>
+  <div class="signal-card">
+    <div class="signal-title">Risk Signal</div>
+    <div class="signal-inner">
+      <div><div class="sm-label">Active Risks</div><div class="sm-val amber">5</div></div>
+      <div><div class="sm-label">Top Score</div><div class="sm-val danger">8</div></div>
+      <div><div class="sm-label">Provision</div><div class="sm-val" style="font-size:14px;color:var(--blue)">KSh 1.8M</div></div>
+      <div><div class="sm-label">Top Risk</div><div class="sm-val danger" style="font-size:11px;margin-top:4px">Collection lag</div></div>
+    </div>
+  </div>
+  <div class="signal-card">
+    <div class="signal-title">Liquidity Cover</div>
+    <div class="signal-inner">
+      <div><div class="sm-label">WC Facility</div><div class="sm-val blue" id="cf-sig-facility">KSh 10.0M</div></div>
+      <div><div class="sm-label">Peak Gap</div><div class="sm-val danger" id="cf-sig-peak">KSh 3.2M</div></div>
+      <div><div class="sm-label">Headroom</div><div class="sm-val green" id="cf-sig-headroom">KSh 6.8M</div></div>
+      <div><div class="sm-label">Covered?</div><div class="sm-val green">YES</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Metrics Strip -->
+<div class="metrics-strip">
+  <div class="metric-tile"><div class="mt-label">Collection Variance</div><div class="mt-val danger">Below target</div><div class="mt-sub">Actual vs forecast to date</div></div>
+  <div class="metric-tile"><div class="mt-label">Peak Gap Week</div><div class="mt-val danger">Week 5</div><div class="mt-sub">Worst cash trough</div></div>
+  <div class="metric-tile"><div class="mt-label">Max Weekly Outflow</div><div class="mt-val" style="color:var(--white)">KSh 3.6M</div><div class="mt-sub">Highest single week</div></div>
+  <div class="metric-tile"><div class="mt-label">Total Finance Drawn</div><div class="mt-val amber">KSh 2.8M</div><div class="mt-sub">KSh vs facility</div></div>
+</div>
+
+<!-- Main Chart -->
+<div class="chart-panel">
+  <h3>Weekly Inflows vs Outflows â€” 13-Week Working Capital Forecast</h3>
+  <div class="chart-sub">Bars show weekly cash movement Â· Line shows cumulative position Â· Red circle marks peak gap Â· Green triangle marks recovery</div>
+  <div style="position:relative;height:240px"><canvas id="cfMainChart"></canvas></div>
+</div>
+
+<!-- Two charts -->
+<div class="charts-equal">
+  <div class="chart-panel" style="margin-bottom:0">
+    <h3>Cash Timing Gap by Week</h3>
+    <div class="chart-sub">Negative equals cash shortfall Â· Peak W5 âˆ’KSh 3.2M</div>
+    <div style="position:relative;height:180px"><canvas id="cfGapChart"></canvas></div>
+  </div>
+  <div class="chart-panel" style="margin-bottom:0;padding:24px">
+    <h3>Inflow Composition by Type</h3>
+    <div class="chart-sub">Total across 13-week forecast period</div>
+    <div style="margin-top:12px">
+      <div class="inflow-row"><span class="inflow-label">Base collections (30-day)</span><div class="inflow-track"><div class="inflow-fill" style="width:52%;background:var(--green)"></div></div><span class="inflow-amt">KSh 31.4M</span></div>
+      <div class="inflow-row"><span class="inflow-label">Contracted receivables</span><div class="inflow-track"><div class="inflow-fill" style="width:36%;background:#8b5cf6"></div></div><span class="inflow-amt" style="color:#8b5cf6">KSh 21.8M</span></div>
+      <div class="inflow-row"><span class="inflow-label">Late-cycle collections</span><div class="inflow-track"><div class="inflow-fill" style="width:20%;background:var(--blue)"></div></div><span class="inflow-amt" style="color:var(--blue)">KSh 12.1M</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Weekly Schedule -->
+<div class="cf-table-wrap" style="margin-top:24px">
+  <div class="cf-table-hdr">
+    <span class="cf-table-hdr-title">Weekly Cashflow Schedule â€” All 13 Weeks</span>
+    <span class="cf-table-hint">Red = peak gap Â· Green = first recovery</span>
+  </div>
+  <table class="cf-table">
+    <thead><tr><th style="text-align:left">Week</th><th>Inflows</th><th>Outflows</th><th>Net</th><th>Equity / Finance</th><th>Cumulative</th><th>Cash Timing Gap</th></tr></thead>
+    <tbody id="cf-tbody"></tbody>
+  </table>
+</div>
+
+<!-- Assumptions -->
+<div class="section-header" style="margin-top:32px"><h2>PROJECT ASSUMPTIONS</h2><span class="section-tag">Business Context</span></div>
+<div class="assumptions-grid">
+  <div class="assumption-card">
+    <div class="assumption-section-label">Business</div>
+    <div class="assumption-row"><span class="assumption-key">Name</span><span class="assumption-val">Medex East Africa Ltd</span></div>
+    <div class="assumption-row"><span class="assumption-key">Type</span><span class="assumption-val">Clinical Equipment Distributor</span></div>
+    <div class="assumption-row"><span class="assumption-key">Start</span><span class="assumption-val">Jun 2026</span></div>
+    <div class="assumption-row"><span class="assumption-key">Duration</span><span class="assumption-val">13 weeks rolling</span></div>
+    <div class="assumption-row"><span class="assumption-key">Product Lines</span><span class="assumption-val">Physio Â· Mobility Â· Ortho Â· Rehab</span></div>
+  </div>
+  <div class="assumption-card">
+    <div class="assumption-section-label">Revenue</div>
+    <div class="assumption-row"><span class="assumption-key">Monthly revenue</span><span class="assumption-val">KSh 8,400,000</span></div>
+    <div class="assumption-row"><span class="assumption-key">Collection rate</span><span class="assumption-val">72% in month 1</span></div>
+    <div class="assumption-row"><span class="assumption-key">Avg payment terms</span><span class="assumption-val">Net 45 days</span></div>
+    <div class="assumption-row"><span class="assumption-key">COGS %</span><span class="assumption-val">58%</span></div>
+    <div class="assumption-row"><span class="assumption-key">Units / month</span><span class="assumption-val">840 cases</span></div>
+  </div>
+  <div class="assumption-card">
+    <div class="assumption-section-label">Funding</div>
+    <div class="assumption-row"><span class="assumption-key">Equity buffer</span><span class="assumption-val">KSh 2,000,000</span></div>
+    <div class="assumption-row"><span class="assumption-key">WC facility</span><span class="assumption-val">KSh 10,000,000</span></div>
+    <div class="assumption-row"><span class="assumption-key">Interest rate</span><span class="assumption-val">1.5% per month</span></div>
+    <div class="assumption-row"><span class="assumption-key">Liquidity cover</span><span class="assumption-val">3.12x</span></div>
+    <div class="assumption-row"><span class="assumption-key">Supplier terms</span><span class="assumption-val">DJO Global / approved principals</span></div>
+  </div>
+</div>
+
+<!-- Cost Tracker -->
+<div class="section-header"><h2>COST TRACKER</h2><span class="section-tag">Budget vs Actual</span></div>
+<div class="ct-summary">
+  <div class="ct-sum-cell"><div class="ct-sum-label">Total Budget</div><div class="ct-sum-val" style="color:var(--white)" id="ct-budget">KSh 11.0M</div></div>
+  <div class="ct-sum-cell"><div class="ct-sum-label">Committed</div><div class="ct-sum-val blue" id="ct-committed">KSh 8.0M</div></div>
+  <div class="ct-sum-cell"><div class="ct-sum-label">Actual Spent</div><div class="ct-sum-val green" id="ct-actual">KSh 5.8M</div></div>
+  <div class="ct-sum-cell"><div class="ct-sum-label">Utilisation</div><div class="ct-sum-val green" id="ct-util">52.7%</div></div>
+  <div class="ct-sum-cell"><div class="ct-sum-label">Remaining</div><div class="ct-sum-val amber" id="ct-remaining">KSh 5.2M</div></div>
+</div>
+<div class="cf-table-wrap">
+  <table class="cf-table">
+    <thead><tr><th style="text-align:left">Category</th><th>Budget KSh</th><th>Committed</th><th>Actual Spent</th><th>Remaining</th><th>Variance %</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Equipment â€” Physiotherapy</td><td>3,600,000</td><td>3,600,000</td><td>2,880,000</td><td>720,000</td><td>Under 20.0%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Equipment â€” Mobility Aids</td><td>2,400,000</td><td>2,400,000</td><td>1,920,000</td><td>480,000</td><td>Under 20.0%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Equipment â€” Orthopaedic</td><td>2,800,000</td><td>2,100,000</td><td>1,540,000</td><td>1,260,000</td><td>Under 45.0%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Equipment â€” Rehabilitation</td><td>1,800,000</td><td>1,440,000</td><td>1,080,000</td><td>720,000</td><td>Under 40.0%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Clearing, Freight &amp; Logistics</td><td>2,880,000</td><td>2,880,000</td><td>2,160,000</td><td>720,000</td><td>Under 25.0%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Staff Salaries</td><td>7,800,000</td><td>7,800,000</td><td>3,250,000</td><td>4,550,000</td><td>Under 58.3%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Westlands Business Centre Rent (Westlands)</td><td>2,160,000</td><td>2,160,000</td><td>900,000</td><td>1,260,000</td><td>Under 58.3%</td><td><span class="tag ok">On Track</span></td></tr>
+      <tr><td>Marketing &amp; Trade Promotions</td><td>960,000</td><td>480,000</td><td>240,000</td><td>720,000</td><td>Under 75.0%</td><td><span class="tag watch">Watch</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- OPERATIONAL CONTROL TOWER -->
+<div class="section-divider"></div>
+<div class="section-header"><h2>OPERATIONAL CONTROL TOWER</h2><span class="section-tag">Cash Drivers Behind the Forecast</span></div>
+<div class="ops-grid">
+  <div class="ops-card"><h3>RECEIVABLES</h3><div class="ops-row"><span>Total owed</span><strong id="ops-rec-total">KSh 1.94M</strong></div><div class="ops-row"><span>Over 60 days</span><strong class="risk" id="ops-rec-60">KSh 1.27M</strong></div><div class="ops-row"><span>Admin errors</span><strong class="watch" id="ops-rec-admin">KSh 97K</strong></div></div>
+  <div class="ops-card"><h3>STOCK</h3><div class="ops-row"><span>Stock value</span><strong id="ops-stock-total">KSh 1.45M</strong></div><div class="ops-row"><span>Dead stock</span><strong class="risk" id="ops-stock-dead">KSh 154K</strong></div><div class="ops-row"><span>Expiring &lt;90d</span><strong class="watch" id="ops-stock-expiry">KSh 254K</strong></div></div>
+  <div class="ops-card"><h3>PURCHASING</h3><div class="ops-row"><span>Total ordered</span><strong id="ops-po-total">KSh 3.95M</strong></div><div class="ops-row"><span>Emergency share</span><strong class="watch" id="ops-po-emergency">4.6%</strong></div><div class="ops-row"><span>Late shipments</span><strong class="risk" id="ops-po-late">1</strong></div></div>
+  <div class="ops-card"><h3>ACTIONS</h3><div class="ops-row"><span>Open</span><strong class="watch" id="ops-actions-open">3</strong></div><div class="ops-row"><span>Blocked</span><strong class="good" id="ops-actions-blocked">0</strong></div><div class="ops-row"><span>Oldest open</span><strong id="ops-actions-oldest">9 days</strong></div></div>
+</div>
+<div class="ops-note">The cashflow forecast is the output. These four controls show what management must change to improve it.</div>
+<div class="full-section"><h3>WEEKLY MANAGEMENT QUEUE</h3><table class="rie-table"><thead><tr><th>Area</th><th>Action</th><th>Owner</th><th>Due</th><th>Status</th></tr></thead><tbody id="ops-actions-table"><tr><td>Receivables</td><td>Chase invoices over 90 days</td><td>Finance</td><td>This week</td><td><span class="tag urgent">Open</span></td></tr><tr><td>Stock</td><td>Price dead stock for clearance</td><td>Warehouse</td><td>This week</td><td><span class="tag watch">In progress</span></td></tr></tbody></table></div></div><!-- /wrapper -->
+
+<script>
+// Timestamp
+const now = new Date();
+document.getElementById('updated-time').textContent = now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) + ', ' + now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+
+// Chart defaults â€” matches RIE exactly
+Chart.defaults.color = '#ffffff';
+Chart.defaults.font.family = "'DM Mono', monospace";
+Chart.defaults.font.size = 10;
+
+// â”€â”€ Overdue Trend Chart (RIE style â€” amber line, same as live RIE)
+const trendCtx = document.getElementById('trendChart').getContext('2d');
+window._trendChart = new Chart(trendCtx, {
+  type:'line',
+  data:{
+    labels:['Day 1','Day 2','Day 3'],
+    datasets:[{
+      label:'Overdue',
+      data:[2100000,2450000,2700000],
+      borderColor:'#f0a500',
+      backgroundColor:'rgba(240,165,0,0.06)',
+      borderWidth:2,
+      pointBackgroundColor:'#f0a500',
+      pointRadius:5,
+      pointHoverRadius:7,
+      tension:0.4,
+      fill:true
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1,titleFont:{family:'DM Mono',size:10},bodyFont:{family:'DM Mono',size:12},titleColor:'rgba(238,240,244,0.4)',bodyColor:'#f0a500',callbacks:{label:ctx=>'KES '+(ctx.parsed.y/1e6).toFixed(2)+'M'}}},
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff'}},
+      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KES '+(v/1e6).toFixed(1)+'M'}}
+    }
+  }
+});
+
+// â”€â”€ Cashflow data
+const weeks = ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12','W13'];
+const inflows  = [1840000,2210000,1960000,1620000,1480000,1840000,1890000,2240000,3980000,2640000,2120000,2460000,1910000];
+const outflows = [2420000,1980000,2240000,1810000,3860000,1820000,1620000,1910000,1740000,1480000,1860000,1920000,1630000];
+const nets = inflows.map((v,i)=>v-outflows[i]);
+let cum=0; const cumulatives = nets.map(v=>{cum+=v;return cum});
+const peakIdx = 4; // W5 â€” only one peak
+const recoveryIdx = cumulatives.findIndex((v,i)=>i>peakIdx&&v>=0);
+
+// â”€â”€ Main CF Chart (cashflow-dashboard style)
+const cfMainCtx = document.getElementById('cfMainChart').getContext('2d');
+new Chart(cfMainCtx, {
+  type:'bar',
+  data:{
+    labels:weeks,
+    datasets:[
+      {label:'Inflows',data:inflows,backgroundColor:'rgba(46,204,113,0.7)',borderRadius:3,yAxisID:'y'},
+      {label:'Outflows',data:outflows.map(v=>-v),backgroundColor:outflows.map((_,i)=>i===peakIdx?'rgba(224,52,52,0.95)':'rgba(224,52,52,0.5)'),borderRadius:3,yAxisID:'y'},
+      {label:'Cumulative',data:cumulatives,type:'line',borderColor:'rgba(74,128,196,0.9)',backgroundColor:'rgba(74,128,196,0.06)',borderWidth:2,fill:true,tension:0.35,yAxisID:'y2',
+        pointRadius:cumulatives.map((_,i)=>(i===peakIdx||i===recoveryIdx)?7:2),
+        pointBackgroundColor:cumulatives.map((_,i)=>i===peakIdx?'#e03434':i===recoveryIdx?'#2ecc71':cumulatives[i]<0?'#e03434':'rgba(74,128,196,0.8)'),
+        pointBorderColor:cumulatives.map((_,i)=>(i===peakIdx||i===recoveryIdx)?'#fff':'transparent'),
+        pointBorderWidth:cumulatives.map((_,i)=>(i===peakIdx||i===recoveryIdx)?2:0)}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:'#ffffff',font:{size:11},boxWidth:12}},
+      tooltip:{mode:'index',intersect:false,backgroundColor:'#111820',borderColor:'rgba(240,165,0,0.2)',borderWidth:1,callbacks:{title:items=>{const i=items[0].dataIndex;let t=weeks[i];if(i===peakIdx)t+=' â—„ PEAK GAP';if(i===recoveryIdx)t+=' â–² FIRST POSITIVE';return t;}}}},
+    scales:{
+      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#ffffff',callback:v=>'KSh '+(Math.abs(v)/1e6).toFixed(1)+'M'}},
+      y2:{position:'right',grid:{display:false},ticks:{color:'#ffffff',callback:v=>'KSh '+(v/1e6).toFixed(1)+'M'}}
+    }
+  }
+});
+
+// â”€â”€ Gap Chart
+const gapCtx = document.getElementById('cfGapChart').getContext('2d');
+const gaps = cumulatives.map(v=>Math.min(v,0));
+new Chart(gapCtx, {
+  type:'bar',
+  data:{labels:weeks,datasets:[{
+    label:'Cash Timing Gap',data:gaps,
     backgroundColor:gaps.map((_,i)=>i===peakIdx?'rgba(224,52,52,0.95)':gaps[i]<0?'rgba(224,52,52,0.45)':'rgba(46,204,113,0.5)'),
     borderRadius:3
   }]},
