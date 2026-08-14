@@ -784,6 +784,19 @@ async function getRange(sheetId, range) {
   } catch { return []; }
 }
 
+let cfSheetNames = null;
+async function getSheetNames(sheetId) {
+  if (cfSheetNames) return cfSheetNames;
+  try {
+    const url=`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}?fields=sheets.properties.title&key=${API_KEY}`;
+    const r=await fetch(url);
+    if(!r.ok) return new Set();
+    const j=await r.json();
+    cfSheetNames=new Set((j.sheets||[]).map(s=>s.properties?.title).filter(Boolean));
+    return cfSheetNames;
+  } catch { return new Set(); }
+}
+
 const parseN = v => { if(!v && v!==0) return 0; const n=parseFloat(String(v).replace(/[^0-9.\-]/g,'')); return isNaN(n)?0:n; };
 const parseRate = v => {
   const n = parseN(v);
@@ -1051,11 +1064,13 @@ function summaryMap(rows, labelCol, valueCol) {
 }
 
 async function fetchLiveOperations() {
+  const available=await getSheetNames(CF_SHEET);
+  if(!available.size) return;
   const [rec, stock, purchases, actions] = await Promise.all([
-    getRange(CF_SHEET, 'Receivables!A1:N20'),
-    getRange(CF_SHEET, 'Stock!A1:N20'),
-    getRange(CF_SHEET, 'Purchases!A1:M20'),
-    getRange(CF_SHEET, 'Actions!A1:K20'),
+    available.has('Receivables') ? getRange(CF_SHEET, 'Receivables!A1:N20') : Promise.resolve([]),
+    available.has('Stock') ? getRange(CF_SHEET, 'Stock!A1:N20') : Promise.resolve([]),
+    available.has('Purchases') ? getRange(CF_SHEET, 'Purchases!A1:M20') : Promise.resolve([]),
+    available.has('Actions') ? getRange(CF_SHEET, 'Actions!A1:K20') : Promise.resolve([]),
   ]);
 
   if (rec.length) {
